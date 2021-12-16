@@ -1,0 +1,94 @@
+.leftbWrap {
+    width: 200px;
+    padding: 0 50px 80px 0;
+    display: table-cell;
+    vertical-align: top;
+
+}
+
+.leftbWrap h2 {
+    background: #272c38;
+    letter-spacing: -2px;
+    padding: 10px 15px 20px 15px;
+    margin:0 auto;
+    color: #fff;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.leftbWrap h2 span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0;
+    color: #fff;
+    font-family: verdana;
+}
+
+.leftb {
+    width: 198px;
+    border: 1px solid #e2e2e2;
+    border-top: 0;
+    border-bottom: 0;
+    margin: 0 0 10px 0;
+}
+
+.leftb dt {
+    font-size: 14px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    padding: 18px 12px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #e2e2e2;
+    line-height: 16px;
+    height:60px;
+}
+.leftb dl{
+    margin:0 auto;
+}
+/*booklist leftb 추가내용 css 숨겼다보이기*/
+.leftbdl dd{
+	padding:12px 15px;
+	display:none;
+}
+.leftbdl:hover dd{
+	display:block;
+}
+.leftbdl dd a{
+	display:block;
+	padding:6px 0px 6px 8px;
+	border-bottom:1px solid #e2e2e2;
+	color:#666;
+}
+.leftbdl dd a:last-child{
+	border-bottom:0;
+}
+/*추가내용끝*/
+.leftcs {
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: 200px;
+    width: 196px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    margin:0 auto;
+}
+
+.leftcs strong {
+    font-size: 29px;
+    font-weight: 600;
+    color: #cc3333;
+    font-family: tahoma;
+    line-height: 30px;
+    display: block;
+    padding: 8px 0 16px;
+    letter-spacing: -1px;
+}
+
+.csline {
+    height: 1px;
+    width: 60px;
+    display: block;
+    background: #aaa;
+    margin: 0 auto 14px;
+}

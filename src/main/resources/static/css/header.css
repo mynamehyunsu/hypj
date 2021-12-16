@@ -1,0 +1,19 @@
+.hWrap{
+    width:1200px;
+    margin:0 auto;
+    position:relative;
+    padding:20px 0;
+    height:90px;
+}
+.hmenu{
+    position:absolute;
+    right:0;
+    top:30px;
+}
+.meWrap{
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #adadad;
+    width:1200px;
+    margin:0 auto;
+
+}

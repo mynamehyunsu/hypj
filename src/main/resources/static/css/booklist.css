@@ -1,0 +1,54 @@
+.booklist{
+    width: 1000px;
+
+    padding: 0 0 80px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.itemtitle{
+	padding:20px 30px;
+}
+.itemtitle h1{
+	color:#111;
+	font-weight:400;
+	font-size:30px;
+}
+.itemli{
+	width:200px;
+	height:350px;
+	text-align:center;
+	margin:0px 15px 70px 0px;
+	float: left;
+	padding:0 0 50px;
+}
+
+.itemli img {
+    width: 190px;
+    height: 230px;
+    display: block;
+    margin: 0 0 20px;
+}
+.itemli h3{
+	font-weight:400;
+	color:#000;
+	font-size:17px;
+}
+.itemli em{
+	display:block;
+	font-size:13px;
+	margin:0 0 10px;
+}
+.itemli strong{
+	color:#cc3333;
+	margin-right:5px;
+}
+.itembtn{
+	border:1px solid #3f3f3f;
+	display:inline-block;
+	padding:5px 12px 4px;
+}
+.paging{
+	text-align:center;
+	margin:0 0 50px;
+}

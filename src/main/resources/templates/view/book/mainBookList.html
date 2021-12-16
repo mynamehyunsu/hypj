@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="layouts/nonMemMainLayout"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="MemContent">
+
+<div style="padding:50px 0 0;">
+        <th:block th:replace="/common/sidebar::sidebar(
+        ~{/menu/sidebarMenu/bookSidebarMenu::menu1},
+        ~{/menu/sidebarMenu/bookSidebarMenu::menu2},
+        ~{/menu/sidebarMenu/bookSidebarMenu::menu3},
+        ~{/menu/sidebarMenu/bookSidebarMenu::menu4}
+        )">
+        </th:block>
+    <link href="/css/booklist.css" type="text/css" rel="stylesheet">
+    <div class="booklist">
+        <div class="itemtitle">
+            <h1>만화 목록</h1>
+        </div>
+        <div id="itemlist" style="height:1100px">
+            <ul>
+                <li class="itemli" >
+                    <form class="itemform">
+                        <img src="/img/onepiece/onepiece100.jpg">
+                        <h3>원피스 100 : 패왕색</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book2.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book3.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book4.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book5.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book6.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book7.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book8.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book9.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book10.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book11.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+
+                <li class="itemli">
+                    <form class="itemform">
+                        <img src="/img/Book/book12.jpg">
+                        <h3>공단기 실전동형모의고사 영어</h3>
+                        <em><strong>10,000</strong>원</em>
+                        <a href="#" class="itembtn">장바구니</a>
+                        <a href="#" class="itembtn">구매하기</a>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <th:block th:replace="/common/paging::pagingFragment"></th:block>
+    </div>
+</div>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<th:block th:fragment="headerFragment(sub1,sub2,sub3)">
+    <link href="/css/header.css" type="text/css" rel="stylesheet">
+    <header >
+        <!--로고,검색폼-->
+        <div class="hWrap">
+            <div>
+                <a href="/index"><img src="/img/hLogo.png" class="rounded float-start" alt="그림없음"></a>
+            </div>
+            <div class="hmenu">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item" ><a class="page-link" href="/agreeJoin.do" ><span th:insert="${sub1}" style="color:#999;"></span></a></li>
+                        <li class="page-item" ><a class="page-link" href="/login.do" ><span th:insert="${sub2}" style="color:#999;"></span></a></li>
+                        <li class="page-item" ><a class="page-link" href="#" ><span th:insert="${sub3}" style="color:#999;"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!--네비게이션 메뉴부분-->
+
+        <div class="meWrap">
+            <nav class="navbar navbar-light ">
+                <div class="container-fluid row " style="margin:0 auto;">
+                    <li class="nav-item dropdown col-3" style="text-align:center;">
+                        <a class="nav-link " href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
+                            서점소개
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown col-3 " style="text-align:center;">
+                        <a class="nav-link " href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
+                            책 구매
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
+                            <li><a class="dropdown-item" href="/mainBookList.do">만화 목록</a></li>
+                            <li><a class="dropdown-item" href="/mainBookList.do">최신 만화</a></li>
+                            <li><a class="dropdown-item" href="#">인기 만화</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown col-3" style="text-align:center;">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
+                            커뮤니티
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown col-3" style="text-align:center;">
+                        <a class="nav-link " href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
+                            고객센터
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+</th:block>
+</html>

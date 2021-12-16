@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="sidebar(menu1,menu2,menu3,menu4)">
+    <link href="/css/sidebar.css" type="text/css" rel="stylesheet">
+    <div class="leftbWrap"> <!--nlnbWrap-->
+        <a href="#">
+            <h2>
+                <span th:insert="${menu1}"></span>
+                <span th:insert="${menu2}" ></span>
+            </h2>
+        </a>
+        <div class="leftb" > <!-- nlnb-->
+            <dl class="leftbdl">
+                <dt>
+                    <a href="#"><span th:insert="${menu3}"></span></a>
+                </dt>
+            </dl>
+            <dl class="leftbdl">
+                <dt>
+                    <a href="#"><span th:insert="${menu4}"></span></a>
+                </dt>
+            </dl>
+        </div>
+        <div class="leftcs"><!--lnbcs-->
+            <p>고객상담/기술지원</p>
+            <strong style="word-break:break-all;">010.4022.3660</strong>
+            <span class="csline"></span>
+            <div class="cs_txt">
+                " 평일 09:00~18:00"<br>
+                "점심시간 12:00~13:00 "
+            </div>
+        </div>
+        <!-- 배너시작 -->
+        <div style="text-align: center;"></div>
+        <!-- 배너끝-->
+    </div>
+</th:block>
+</body>
+</html>

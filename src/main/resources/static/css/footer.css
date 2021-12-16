@@ -1,0 +1,21 @@
+.fWrap{
+    height:200px;
+    width:1200px;
+    margin:0 auto;
+    padding:50px 0;
+    border-top: 1px solid #ededed;
+}
+.fcopy{
+    float:left;
+    width:80%;
+    font-size:14px;
+    color:#999;
+    line-height:25px;
+}
+.fcopy strong{
+    font-weight:800;
+    color:black;
+}
+.flogo{
+
+}
