@@ -39,4 +39,9 @@ public class BookController {
     public String mainBookList(){
         return "/view/book/mainBookList.html";
     }
+
+    @GetMapping("/bookRead.do")
+    public String bookRead(){
+        return "/view/book/bookRead.html";
+    }
 }

@@ -1,19 +1,7 @@
-.booklist{
-    width: 1000px;
+@import "/css/scontents.css";
 
-    padding: 0 0 80px;
-    display: table-cell;
-    vertical-align: top;
-}
 
-.itemtitle{
-	padding:20px 30px;
-}
-.itemtitle h1{
-	color:#111;
-	font-weight:400;
-	font-size:30px;
-}
+
 .itemli{
 	width:200px;
 	height:350px;
