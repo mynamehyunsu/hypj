@@ -38,6 +38,12 @@ public class BookController {
         return "/view/member/login/memberFind.html";
     }
 
+    //서점 소개
+    @GetMapping("/introduction.do")
+    public String introduction(){
+        return "/view/introduction/bookIntro.html";
+    }
+
     //책소개
     @GetMapping("/mainBookList.do")
     public String mainBookList(){
