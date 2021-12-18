@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      layout:decorate="layouts/nonMemMainLayout"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<th:block layout:fragment="MemContent">
 
+    <div style="padding:50px 0 0;">
+        <th:block th:replace="/common/sidebar::sidebar(
+        ~{/menu/sidebarMenu/boardMenu::menu1},
+        ~{/menu/sidebarMenu/boardMenu::menu2},
+        ~{/menu/sidebarMenu/boardMenu::menu3},
+        ~{/menu/sidebarMenu/boardMenu::menu4}
+        )">
+        </th:block>
+        <link href="/css/booklist.css" type="text/css" rel="stylesheet">
+        <div class="scontent">
+            <div class="itemtitle">
+                <h1>자유 게시판</h1>
+            </div>
+            <div class="itemlist" >
+                <table class="table" >
+                    <thead class="table-light fs-6" style="height:40px; text-align:center; line-height:30px;">
+                    <tr>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">조회수</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="fs-6" style="height:35px; text-align:center; line-height:25px;">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="/boardRead.do">Mark</a></td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td><a href="/boardRead.do">Mark</a></td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td><a href="/boardRead.do">Mark</a></td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <th:block th:replace="/common/paging::pagingFragment"></th:block>
+        </div>
+    </div>
+</th:block>
 </body>
 </html>

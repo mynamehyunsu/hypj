@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="layouts/nonMemMainLayout"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="MemContent">
+
+    <div style="padding:50px 0 0;">
+        <th:block th:replace="/common/sidebar::sidebar(
+        ~{/menu/sidebarMenu/boardMenu::menu1},
+        ~{/menu/sidebarMenu/boardMenu::menu2},
+        ~{/menu/sidebarMenu/boardMenu::menu3},
+        ~{/menu/sidebarMenu/boardMenu::menu4}
+        )">
+        </th:block>
+        <link href="/css/scontents.css" type="text/css" rel="stylesheet">
+        <div class="scontent">
+            <div class="itemtitle">
+                <h1>자유 게시판</h1>
+            </div>
+            <div class="itemlist" >
+                <table class="table" >
+                    <thead  style="height:40px; text-align:center; line-height:30px; ">
+                    <tr>
+                        <th scope="col-1" class="table-light fs-6">제목</th>
+                        <td class="col-10" colspan="2">제목임</td>
+                    </tr>
+                    <tr >
+                        <th scope="col-1" class="table-light fs-6">글쓴이</th>
+                        <td class="col-8">글쓴이/ 글쓴날짜</td>
+                        <td scope="col-1">조회수</td>
+                    </tr>
+                    </thead>
+                    <tbody class="fs-6" style=" line-height:25px; ">
+                    <tr>
+                        <td colspan="3" style="padding:20px;">MarkMarkMarkMarkMark
+                            MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark
+                            MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark
+                            MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark
+                            MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark
+                            MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="container-fluid  justify-content-center">
+
+                </div>
+                <div style="float:left; width:100%; padding:30px 0 30px;">
+                    <nav class="navbar navbar-light " >
+                        <div class="container-fluid  justify-content-center">
+                            <a href="#" class="btn btn-dark me-3">답변하기</a>
+                            <a href="#" class="btn btn-secondary">목록으로</a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="input-group" style="margin-bottom:20px;">
+                    <div class="input-group-text">답변</div>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding:30px 10px 30px;">
+                    <span style="line-height:40px; color:red;">기타 의견은 250자 내외로 작성 가능합니다</span>
+                    <a class="btn btn-primary " href="#">댓글 달기</a>
+                </div>
+                <div style="border-top: 1px solid #ededed; border-bottom: 1px solid #ededed; padding:20px 0 20px;">
+                    <div>
+                        <span>아이디</span><span>등록날짜</span>
+                    </div>
+                    <div>
+                        내용
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

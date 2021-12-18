@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="layouts/nonMemMainLayout"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="MemContent">
+
+    <div style="padding:50px 0 0;">
+        <th:block th:replace="/common/sidebar::sidebar(
+        ~{/menu/sidebarMenu/boardMenu::menu1},
+        ~{/menu/sidebarMenu/boardMenu::menu2},
+        ~{/menu/sidebarMenu/boardMenu::menu3},
+        ~{/menu/sidebarMenu/boardMenu::menu4}
+        )">
+        </th:block>
+        <link href="/css/booklist.css" type="text/css" rel="stylesheet">
+        <div class="scontent">
+            <div class="itemtitle">
+                <h1>장바구니</h1>
+            </div>
+            <div class="itemlist" >
+                <table class="table" >
+                    <thead class="table-light fs-6" style="height:40px; text-align:center; line-height:30px;">
+                    <tr >
+                        <th class="col-2">결제</th>
+                        <th  class="col-2">삭제</th>
+                        <th  class="col-6">책 이름</th>
+                        <th  class="col-1">수량</th>
+                        <th  class="col-3">금액</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="fs-6" style="height:35px; text-align:center; line-height:25px;">
+                    <tr>
+                        <th><a href="#" style="color:red; border:1px solid gray; padding:5px;">결제</a></th>
+                        <td><input type="checkbox" value="" name=""></td>
+                        <td style="text-align:left;">원피스.100:패왕색</td>
+                        <td >
+                            <select name=""  style="width:50px; height:30px; text-align:center;">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+                        </td>
+                        <td style="color:red;" class="col-2">99,000</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding:30px 10px 30px;;">
+                    <a class="btn btn-secondary me-2" href="#">삭제</a>
+                    <a class="btn btn-danger" href="#">선택 결제</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

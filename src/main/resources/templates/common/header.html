@@ -13,7 +13,7 @@
                     <ul class="pagination">
                         <li class="page-item" ><a class="page-link" href="/agreeJoin.do" ><span th:insert="${sub1}" style="color:#999;"></span></a></li>
                         <li class="page-item" ><a class="page-link" href="/login.do" ><span th:insert="${sub2}" style="color:#999;"></span></a></li>
-                        <li class="page-item" ><a class="page-link" href="#" ><span th:insert="${sub3}" style="color:#999;"></span></a></li>
+                        <li class="page-item" ><a class="page-link" href="/cart.do" ><span th:insert="${sub3}" style="color:#999;"></span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -28,9 +28,8 @@
                             서점소개
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">서점 소개</a></li>
+                            <li><a class="dropdown-item" href="#">오시는 길</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown col-3 " style="text-align:center;">
@@ -48,15 +47,16 @@
                         <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
                             커뮤니티
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
-                            <li><a class="dropdown-item" href="#">자유게시판</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:60px; text-align:center;">
+                            <li><a class="dropdown-item" href="/boardList.do">자유게시판</a></li>
+                            <li><a class="dropdown-item" href="">겔러리</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown col-3" style="text-align:center;">
                         <a class="nav-link " href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:18px; color:black;">
                             고객센터
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:55px; text-align:center;">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left:60px; text-align:center;">
                             <li><a class="dropdown-item" href="#">공지사항</a></li>
                             <li><a class="dropdown-item" href="#">문의 게시판</a></li>
                         </ul>
