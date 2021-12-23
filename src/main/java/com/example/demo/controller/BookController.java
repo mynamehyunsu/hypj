@@ -11,6 +11,11 @@ public class BookController {
         return"/view/main.html";
     }
 
+    @GetMapping("/admin.do")
+    public String adminMain(){
+        return "/view/adminMain.html";
+    }
+
     @GetMapping("/index")
     public String Index(){
         return"/index.html";
@@ -26,6 +31,11 @@ public class BookController {
     public String agreeJoin(){
         return "/view/member/join/agreeJoin.html";
     }
+    @GetMapping("/memberFind.do")
+    public String memberFind(){
+        return "/view/member/login/memberFind.html";
+    }
+
 
     //가입
     @GetMapping("/join.do")
@@ -33,10 +43,6 @@ public class BookController {
         return "/view/member/join/join.html";
     }
 
-    @GetMapping("/memberFind.do")
-    public String memberFind(){
-        return "/view/member/login/memberFind.html";
-    }
 
     //서점 소개
     @GetMapping("/introduction.do")

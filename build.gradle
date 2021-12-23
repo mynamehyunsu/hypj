@@ -19,6 +19,11 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	//MYSQL 추가
+	implementation 'mysql:mysql-connector-java'
+
 	//레이아웃 사용
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 

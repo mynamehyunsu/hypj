@@ -9,6 +9,7 @@
 <body>
 <th:block layout:fragment="MemContent">
     <link href="/css/join.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/js/member.js" ></script>
     <div class="stepjoin">
         <ul>
             <li >약관동의<span class="stepspan" style="color:#888;"><i class="far fa-calendar-check fa-3x"></i></span></li>
@@ -74,6 +75,10 @@
             </tr>
             <tr>
                 <td><input type="text" name="addr2" id="addr2" class="logininput" style="width:600px"></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="auth" value="ROLE_USER">사용자</td>
+                <td><input type="radio" name="auth" value="ROLE_ADMIN">사용자</td>
             </tr>
         </table>
 
