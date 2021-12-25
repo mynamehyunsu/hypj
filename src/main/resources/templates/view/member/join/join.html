@@ -23,7 +23,7 @@
         <em>(<span class="star">*</span>표시된 항목은 꼭 입력해 주셔야 가입이 가능합니다.)</em>
     </h3>
 
-    <form name="inputform" method="post" action="/member/join.do">
+    <form name="inputform" method="post" action="/joinProc.do">
         <table class="formtable" style="width:900px; margin:0 auto;">
             <tr>
                 <th>아이디<span class="star">*</span></th>
@@ -77,16 +77,18 @@
                 <td><input type="text" name="addr2" id="addr2" class="logininput" style="width:600px"></td>
             </tr>
             <tr>
-                <td><input type="radio" name="auth" value="ROLE_USER">사용자</td>
-                <td><input type="radio" name="auth" value="ROLE_ADMIN">사용자</td>
+                <td>
+                    <input type="radio" name="auth" value="ROLE_USER" >사용자
+                </td>
+                <td>
+                    <input type="radio" name="auth" value="ROLE_ADMIN" >관리자
+                </td>
             </tr>
         </table>
 
-
-
         <div class="checkbutton">
             <input type="button" value="가입하기" class="chkbtninput" onclick="joinCheck()">
-            <a href="/MainPage.jsp">취소하기</a>
+            <a href="/index">취소하기</a>
         </div>
     </form>
 </th:block>

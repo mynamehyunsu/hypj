@@ -25,7 +25,13 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 .loginPage("/login.do")//내가만든 로그인페이지로 이동
-                .defaultSuccessUrl("/index");
+                //로그인에서 받아오는 userid를 loadUserByUsername 함수의 매개변수랑 매칭시켜주기위함
+                .usernameParameter("userid")
+                .passwordParameter("pwd")
+                .loginProcessingUrl("/loginForm.do")
+                .failureUrl("/login.do")
+                .defaultSuccessUrl("/main");
         http.csrf().disable();
+
     }
 }

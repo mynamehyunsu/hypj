@@ -52,6 +52,10 @@ function addrfunc(){//우편번호를 클릭했을때
 			alert("전화번호가 입력되지 않았습니다");
 			return inputform.phone3.focus();
 		}
+		if(inputform.email.value == ""){
+        			alert("이메일이 입력되지 않았습니다");
+        			return inputform.email.focus();
+        }
 		if(inputform.zipcode.value == ""){
 			alert("우편번호가 입력되지 않았습니다");
 			return inputform.zipcode.focus();
@@ -75,23 +79,22 @@ function addrfunc(){//우편번호를 클릭했을때
 
 		if(userid === ""){
 			alert("아이디 입력하세요");
-			return userid.focus();
+			return inputform.userid.focus();
 		}
 		$.ajax({
-			url : '/member/joinidcheck.do',
+			url : '/joinidcheck.do',
 			type : 'post',
 			data : {'userid' : userid},
-			dataType:"html",
 			error:function(request,status,error){
-				alert('에러code : ' + request.status+"\n에러메시지error : " + error);
+				alert('에러code : ' + request.status+"에러메시지error : " + error);
 			},
 			success : function(result){
 				var b = result;
-				if(b ===userid ){
-					alert("이미사용중인아이디입니다"+b);
+				if(b == 1 ){
+					alert(userid + "아이디는 사용중인아이디입니다");
 					userid = "";
 				}else{
-					alert("사용가능한 아이디입니다"+userid);
+					alert(userid + "는 사용가능한 아이디입니다");
 					inputform.useridunchk.value="idchk";
 
 				}
@@ -122,12 +125,10 @@ function addrfunc(){//우편번호를 클릭했을때
 			alert("비밀번호확인이 입력되지 않았습니다");
 			return inputform.pwdchk.focus();
 		}
-
 		if( inputform.pwd.value != inputform.pwdchk.value){
 			alert("비밀번호를 일치하게 입력하세요");
 			return inputform.pwdchk.focus();
 		}
-
 		if(inputform.username.value == ""){
 			alert("이름이 입력되지 않았습니다");
 			return inputform.username.focus();
@@ -144,6 +145,10 @@ function addrfunc(){//우편번호를 클릭했을때
 			alert("전화번호가 입력되지 않았습니다");
 			return inputform.phone3.focus();
 		}
+		if(inputform.email.value == ""){
+                alert("이메일이 입력되지 않았습니다");
+                return inputform.email.focus();
+        }
 		if(inputform.zipcode.value == ""){
 			alert("우편번호가 입력되지 않았습니다");
 			return inputform.zipcode.focus();
