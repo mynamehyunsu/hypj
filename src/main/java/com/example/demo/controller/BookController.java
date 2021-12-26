@@ -6,7 +6,9 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,19 +63,16 @@ public class BookController {
 
     //회원수정
     @GetMapping("/memberUpdate.do")
-    public String memberUpdate(MemberEntity member){
-        System.out.println(member.getUserid());
-        //public String memberUpdate(Model model, HttpServletRequest req){
-//        public String memberUpdate( Model model,@RequestParam("userid") String userid){
-//        MemberEntity member = service.getMember(req.getParameter("userid"));
-//        System.out.println("정보수정버튼클릭시 받아오는 userid : " + req.getParameter("userid"));
-//        MemberDTO memberDTO = MemberDTO.builder()
-//                .phone1(member.getPhone().substring(0,3))
-//                .phone1(member.getPhone().substring(3,7))
-//                .phone1(member.getPhone().substring(7,member.getPhone().length()))
-//                .build();
-//        model.addAttribute("memberDTO",memberDTO);
-//        model.addAttribute("member",member);
+    public String memberUpdate(Model model, Authentication authentication){
+        UserDetails userdetails = (UserDetails) authentication.getPrincipal();
+        MemberEntity member = service.getMember(userdetails.getUsername());
+        MemberDTO memberDTO = MemberDTO.builder()
+                .phone1(member.getPhone().substring(0,3))
+                .phone2(member.getPhone().substring(3,7))
+                .phone3(member.getPhone().substring(7,member.getPhone().length()))
+                .build();
+        model.addAttribute("memberDTO",memberDTO);
+        model.addAttribute("member",member);
         return "/view/member/modify/memberUpdate.html";
     }
 

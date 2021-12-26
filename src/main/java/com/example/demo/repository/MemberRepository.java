@@ -9,5 +9,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity,String> {
 
     Optional<MemberEntity> findByUserid(String userid);
 
+    Optional<MemberEntity> findByUsername(String username);
+
 
 }

@@ -37,6 +37,14 @@ public class MemberService implements UserDetailsService {
 //            System.out.println("아이디를통해받아온계정아이디 : " +result.get().getUserid());
 //            System.out.println("비밀번호 : " + result.get().getPwd());
             //세션에 정보들어감
+//            System.out.println(result.get().getUserid());
+//            System.out.println(result.get().getUsername());
+//            System.out.println(result.get().getAddr1());
+//            System.out.println(result.get().getAddr2());
+//            System.out.println(result.get().getEmail());
+//            System.out.println(result.get().getPhone());
+//            System.out.println(result.get().getZipcode());
+
             return result.get();
         }else{
             throw new UsernameNotFoundException("Check userid~~");
@@ -45,7 +53,7 @@ public class MemberService implements UserDetailsService {
 
     //아이디 중복확인
     public int idCheck(String userid){
-        Optional<MemberEntity> result = memberrepo.findById(userid);
+        Optional<MemberEntity> result = memberrepo.findByUsername(userid);
         if(result.isPresent()){
             return 1;
         }else{
@@ -54,8 +62,8 @@ public class MemberService implements UserDetailsService {
 
     }
 
-    public MemberEntity getMember(String userid){
-       Optional<MemberEntity> member = memberrepo.findByUserid(userid);
+    public MemberEntity getMember(String username){
+       Optional<MemberEntity> member = memberrepo.findByUsername(username);
         return member.get();
     }
 

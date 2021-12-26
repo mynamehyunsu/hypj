@@ -35,11 +35,13 @@
                     <table class="formtable" style="width:900px; margin:0 auto;">
                         <tr>
                             <th>아이디<span class="star">*</span></th>
-                            <td sec:authentication="name"></td>
+                            <td th:text="${member.userid}"></td>
                         </tr>
                         <tr>
                             <th>이름<span class="star">*</span></th>
-                            <td ></td>
+                            <td sec:authentication="name">
+
+                            </td>
 
                         </tr>
                         <tr>
@@ -56,29 +58,29 @@
                         <tr>
                             <th>휴대전화번호<span class="star">*</span></th>
                             <td>
-                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" >-
-                                <input type="text" name="phone2" class="logininput" style="width:60px" maxlength="4" >-
-                                <input type="text" name="phone3" class="logininput" style="width:60px" maxlength="4" >
+                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" th:value="${memberDTO.phone1}">-
+                                <input type="text" name="phone2" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone2}">-
+                                <input type="text" name="phone3" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone3}">
                             </td>
                         </tr>
                         <tr>
                             <th>이메일</th>
                             <td>
-                                <input type="email" name="email" class="logininput" style="width:300px;">
+                                <input type="email" name="email" class="logininput" style="width:300px;" th:value="${member.email}">
                             </td>
                         </tr>
                         <tr>
                             <th rowspan="3">주소<span class="star">*</span></th>
                             <td>
-                                <input type="text" name="zipcode" id="zipcode" class="logininput" style="width:70px" readonly >
+                                <input type="text" name="zipcode" id="zipcode" class="logininput" style="width:70px" readonly th:value="${member.zipcode}">
                                 <a class="formbutton" onclick="addrfunc()">우편번호</a>
                             </td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="addr1" id="addr1" class="logininput" style="width:600px" readonly ></td>
+                            <td><input type="text" name="addr1" id="addr1" class="logininput" style="width:600px" readonly th:value="${member.addr1}"></td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="addr2" id="addr2" class="logininput" style="width:600px" ></td>
+                            <td><input type="text" name="addr2" id="addr2" class="logininput" style="width:600px" th:value="${member.addr2}"></td>
                         </tr>
                     </table>
 
