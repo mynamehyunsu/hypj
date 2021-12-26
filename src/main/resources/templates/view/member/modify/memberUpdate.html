@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="layouts/memLayout"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="MemContent">
+    <link href="/css/join.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/js/member.js" ></script>
+    <div style="padding:50px 0 0;">
+        <th:block th:replace="/common/sidebar::sidebar(
+        ~{/menu/sidebarMenu/memberUpdateMenu::menu1},
+        ~{/menu/sidebarMenu/memberUpdateMenu::menu2},
+        ~{/menu/sidebarMenu/memberUpdateMenu::menu3},
+        ~{/menu/sidebarMenu/memberUpdateMenu::menu4}
+        )">
+        </th:block>
+        <link href="/css/booklist.css" type="text/css" rel="stylesheet">
+        <div class="scontent">
+            <div class="itemtitle">
+                <h1>회원정보 수정</h1>
+            </div>
+            <div class="itemlist" >
+
+                <h3 class="steptitle">
+                    <span class="point">.</span>
+                    회원기본정보
+                    <em>(<span class="star">*</span>표시된 항목은 꼭 입력해 주셔야 가입이 가능합니다.)</em>
+                </h3>
+
+                <form name="inputform" method="post" action="/joinProc.do">
+                    <table class="formtable" style="width:900px; margin:0 auto;">
+                        <tr>
+                            <th>아이디<span class="star">*</span></th>
+                            <td sec:authentication="name"></td>
+                        </tr>
+                        <tr>
+                            <th>이름<span class="star">*</span></th>
+                            <td ></td>
+
+                        </tr>
+                        <tr>
+                            <th>비밀번호<span class="star">*</span></th>
+                            <td>
+                                <input type="password" name="pwd" class="logininput" minlength="4" >
+                                <span class="star" style="font-size:13px;">*4자이상의 영문 및 숫자</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호확인<span class="star">*</span></th>
+                            <td><input type="password" name="pwdchk" class="logininput"></td>
+                        </tr>
+                        <tr>
+                            <th>휴대전화번호<span class="star">*</span></th>
+                            <td>
+                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" >-
+                                <input type="text" name="phone2" class="logininput" style="width:60px" maxlength="4" >-
+                                <input type="text" name="phone3" class="logininput" style="width:60px" maxlength="4" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>
+                                <input type="email" name="email" class="logininput" style="width:300px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">주소<span class="star">*</span></th>
+                            <td>
+                                <input type="text" name="zipcode" id="zipcode" class="logininput" style="width:70px" readonly >
+                                <a class="formbutton" onclick="addrfunc()">우편번호</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="addr1" id="addr1" class="logininput" style="width:600px" readonly ></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="addr2" id="addr2" class="logininput" style="width:600px" ></td>
+                        </tr>
+                    </table>
+
+                    <div class="checkbutton">
+                        <input type="button" value="가입하기" class="chkbtninput" onclick="joinCheck()">
+                        <a class="chkbtninput" href="#" style="color:#fff;">회원탈퇴</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>

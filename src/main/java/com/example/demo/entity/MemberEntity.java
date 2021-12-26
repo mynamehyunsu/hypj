@@ -89,4 +89,13 @@ public class MemberEntity implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Builder
+    public MemberEntity(String phone, String email, String zipcode, String addr1, String addr2) {
+        this.phone = phone;
+        this.email = email;
+        this.zipcode = zipcode;
+        this.addr1 = addr1;
+        this.addr2 = addr2;
+    }
 }

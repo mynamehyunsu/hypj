@@ -54,6 +54,10 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    public MemberEntity getMember(String userid){
+       Optional<MemberEntity> member = memberrepo.findByUserid(userid);
+        return member.get();
+    }
 
     //dto -> entity
     public void save(MemberDTO dto){
@@ -76,8 +80,6 @@ public class MemberService implements UserDetailsService {
         memberrepo.save(memberentity);
     }
 
-//    private String getEncodedPassword(String pwd) {
-//        return ("{dto.getUserid()}" + pwd);
-//    }
+
 
 }

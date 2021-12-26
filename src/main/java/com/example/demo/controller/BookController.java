@@ -1,15 +1,20 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.entity.MemberEntity;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
@@ -54,6 +59,23 @@ public class BookController {
         return "/view/member/login/memberFind.html";
     }
 
+    //회원수정
+    @GetMapping("/memberUpdate.do")
+    public String memberUpdate(MemberEntity member){
+        System.out.println(member.getUserid());
+        //public String memberUpdate(Model model, HttpServletRequest req){
+//        public String memberUpdate( Model model,@RequestParam("userid") String userid){
+//        MemberEntity member = service.getMember(req.getParameter("userid"));
+//        System.out.println("정보수정버튼클릭시 받아오는 userid : " + req.getParameter("userid"));
+//        MemberDTO memberDTO = MemberDTO.builder()
+//                .phone1(member.getPhone().substring(0,3))
+//                .phone1(member.getPhone().substring(3,7))
+//                .phone1(member.getPhone().substring(7,member.getPhone().length()))
+//                .build();
+//        model.addAttribute("memberDTO",memberDTO);
+//        model.addAttribute("member",member);
+        return "/view/member/modify/memberUpdate.html";
+    }
 
     //가입
     @PostMapping("/join.do")
@@ -68,13 +90,7 @@ public class BookController {
         return "redirect:/index";
     }
 
-    @PostMapping("/joinidcheck.do")
-    @ResponseBody
-    public int joinIdCheck(@RequestParam("userid") String userid){
-        int result = service.idCheck(userid);
 
-        return result;
-    }
 
 
     //서점 소개
