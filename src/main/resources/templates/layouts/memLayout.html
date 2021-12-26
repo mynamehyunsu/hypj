@@ -9,11 +9,7 @@
 </head>
 <body>
     <!--헤더영역-->
-    <th:block th:replace="/common/header::headerFragment(
-    ~{/menu/member::sub1},
-    ~{/menu/member::sub2},
-    ~{/menu/member::sub3}
-    )">
+    <th:block th:replace="/common/header::headerFragment">
     </th:block>
     <!--컨텐츠영역-->
     <th:block th:replace="/common/mainContent::mainContentFragment">

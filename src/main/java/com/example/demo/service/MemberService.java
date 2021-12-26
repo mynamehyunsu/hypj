@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.Optional;
 
@@ -28,10 +29,13 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
 
-       Optional<MemberEntity> result = memberrepo.findById(userid);
+       Optional<MemberEntity> result = memberrepo.findByUserid(userid);
         if(result.isPresent()){
             //Security Session(내부에 Authentication(내부에 result.get())이들어감) > Authentication > UserDetails(MemberEntity)
-            System.out.println(result.get());
+//            System.out.println("받아온유저아이디 : " + userid);
+//            System.out.println("아이디를 통해 가져온 계정"+result.get());
+//            System.out.println("아이디를통해받아온계정아이디 : " +result.get().getUserid());
+//            System.out.println("비밀번호 : " + result.get().getPwd());
             //세션에 정보들어감
             return result.get();
         }else{
@@ -55,7 +59,7 @@ public class MemberService implements UserDetailsService {
     public void save(MemberDTO dto){
         //비밀번호 암호화 작업
         BCryptPasswordEncoder pwdencoder = new BCryptPasswordEncoder();
-        dto.setPwd(pwdencoder.encode("{dto.getUserid()}"+dto.getPwd()));
+        dto.setPwd(pwdencoder.encode(dto.getPwd()));
 
         MemberEntity memberentity = MemberEntity.builder()
                 .userid(dto.getUserid())
@@ -72,8 +76,8 @@ public class MemberService implements UserDetailsService {
         memberrepo.save(memberentity);
     }
 
-    private String getEncodedPassword(String pwd) {
-        return ("{dto.getUserid()}" + pwd);
-    }
+//    private String getEncodedPassword(String pwd) {
+//        return ("{dto.getUserid()}" + pwd);
+//    }
 
 }

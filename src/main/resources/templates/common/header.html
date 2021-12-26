@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="">
-<th:block th:fragment="headerFragment(sub1,sub2,sub3)">
+<html lang="en" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="headerFragment">
     <link href="/css/header.css" type="text/css" rel="stylesheet">
     <header >
         <!--로고,검색폼-->
@@ -10,11 +10,23 @@
             </div>
             <div class="hmenu">
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item" ><a class="page-link" href="/agreeJoin.do" ><span th:insert="${sub1}" style="color:#999;"></span></a></li>
-                        <li class="page-item" ><a class="page-link" href="/login.do" ><span th:insert="${sub2}" style="color:#999;"></span></a></li>
-                        <li class="page-item" ><a class="page-link" href="/cart.do" ><span th:insert="${sub3}" style="color:#999;"></span></a></li>
+
+
+                    <ul sec:authorize="isAnonymous()" class="pagination" >
+                        <li class="page-item" ><a class="page-link" th:href="@{/agreeJoin.do}" ><span  style="color:#999;">회원가입</span></a></li>
+                        <li class="page-item" ><a class="page-link" th:href="@{/login.do}" ><span  style="color:#999;">로그인</span></a></li>
+                        <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span  style="color:#999;">장바구니</span></a></li>
                     </ul>
+
+
+
+                    <ul sec:authorize="isAuthenticated()" class="pagination">
+                        <li class="page-item" style="line-height:30px; padding-right:10px;"><span sec:authentication="name" style="color:#999;"></span>님 반갑습니다</li>
+                        <li class="page-item" ><a class="page-link" th:href="@{/agreeJoin.do}" ><span style="color:#999;">정보수정</span></a></li>
+                        <li class="page-item" ><a class="page-link" th:href="@{/logout}" ><span  style="color:#999;">로그아웃</span></a></li>
+                        <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span style="color:#999;">장바구니</span></a></li>
+                    </ul>
+
                 </nav>
             </div>
         </div>

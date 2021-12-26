@@ -21,6 +21,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
+
+	//시큐리티 적용 타임리프
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
 	//MYSQL 추가
 	implementation 'mysql:mysql-connector-java'
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      layout:decorate="layouts/nonMemMainLayout"
+      layout:decorate="layouts/memLayout"
       xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="">
 <head>
     <meta charset="UTF-8">
@@ -14,12 +14,16 @@
         <div class="logintitle">
             <h1>LOGIN</h1>
         </div>
+        <!--<form name="loginform" method="post" th:action="@{/loginForm.do}">-->
         <form name="loginform" method="post" action="/loginForm.do">
+            <!--토큰값
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            -->
             <div class="loginformbox">
                 <p>아이디가 없으면 무료 회원가입을 해주시기 바랍니다</p>
                 <ul>
-                    <li><input type="text" name="userid" placeholder="아이디" value="" class="logininput"></li>
-                    <li><input type="password" name="pwd" placeholder="비밀번호" value="" class="logininput"></li>
+                    <li><input type="text" name="userid" placeholder="아이디"  class="logininput"></li>
+                    <li><input type="password" name="pwd" placeholder="비밀번호" class="logininput"></li>
                 </ul>
                 <a class="loginbutton" onclick="loginCheck()"><span>로그인</span></a>
             </div>
