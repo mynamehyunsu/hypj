@@ -7,6 +7,26 @@
     <title>Title</title>
 </head>
 <body>
+
+
+<th:block layout:fragment="js">
+    <script th:inline="javascript">
+
+<!--        var message = [[${message}]];-->
+<!--        alert(message);-->
+
+
+        /*<![CDATA[*/
+            let name = /*[[ ${message} ]]*/;
+            alert(name);
+        /*]]*/
+
+
+
+    </script>
+</th:block>
+
+
 <th:block layout:fragment="MemContent">
     <th:block th:replace="/common/homeMainContent::homemaincontent">
 </th:block>

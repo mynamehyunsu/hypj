@@ -11,12 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,7 +41,19 @@ public class BookController {
 
     @GetMapping("/index")
     public String Index(){
-        return"/index.html";
+
+//        String message=null;
+//        if(model.getAttribute("message")!=null)
+//        {
+//            message= (String) model.getAttribute("message");
+//        }
+//        model.addAttribute("message",message);
+////        if(message != null) {
+////            model.addAttribute("message", message);
+////        }
+//        System.out.println("TEST!!!!!!!!!:"+model.getAttribute("message"));
+        return "/index.html";
+
     }
 
     //로그인
@@ -79,14 +90,20 @@ public class BookController {
     //가입
     @PostMapping("/join.do")
     public String join(){
+
         return "/view/member/join/join.html";
     }
 
     @PostMapping("/joinProc.do")
-    public String joinProc(MemberDTO dto){
-        System.out.println(dto.toString());
-        service.save(dto);
-        return "redirect:/index";
+    public ModelAndView joinProc(MemberDTO dto){
+        //System.out.println(dto.toString());
+        MemberEntity entity = service.save(dto);
+
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/index");
+        modelAndView.addObject("message", "서버의 메시지입니다.");
+
+        return modelAndView;
     }
 
 

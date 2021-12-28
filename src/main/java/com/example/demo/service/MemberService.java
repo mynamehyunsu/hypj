@@ -68,7 +68,7 @@ public class MemberService implements UserDetailsService {
     }
 
     //dto -> entity
-    public void save(MemberDTO dto){
+    public MemberEntity save(MemberDTO dto){
         //비밀번호 암호화 작업
         BCryptPasswordEncoder pwdencoder = new BCryptPasswordEncoder();
         dto.setPwd(pwdencoder.encode(dto.getPwd()));
@@ -85,8 +85,12 @@ public class MemberService implements UserDetailsService {
                 .auth(dto.getAuth().toString())
                 .build();
         //암호화된 비번으로 DB에 저장
-        memberrepo.save(memberentity);
+        MemberEntity entity = memberrepo.save(memberentity);
+        return entity;
+
+
     }
+
 
 
 
