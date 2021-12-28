@@ -40,18 +40,10 @@ public class BookController {
     }
 
     @GetMapping("/index")
-    public String Index(){
+    public String Index(HttpServletRequest req){
 
-//        String message=null;
-//        if(model.getAttribute("message")!=null)
-//        {
-//            message= (String) model.getAttribute("message");
-//        }
-//        model.addAttribute("message",message);
-////        if(message != null) {
-////            model.addAttribute("message", message);
-////        }
-//        System.out.println("TEST!!!!!!!!!:"+model.getAttribute("message"));
+
+        System.out.println("메시지 : " + req.getAttribute("message"));
         return "/index.html";
 
     }
@@ -100,8 +92,8 @@ public class BookController {
         MemberEntity entity = service.save(dto);
 
 
-        ModelAndView modelAndView = new ModelAndView("redirect:/index");
-        modelAndView.addObject("message", "서버의 메시지입니다.");
+        ModelAndView modelAndView = new ModelAndView("/index");
+        modelAndView.addObject("message", "회원가입 성공");
 
         return modelAndView;
     }
