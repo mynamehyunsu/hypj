@@ -92,9 +92,12 @@ public class BookController {
         MemberEntity entity = service.save(dto);
 
 
-        ModelAndView modelAndView = new ModelAndView("/index");
-        modelAndView.addObject("message", "회원가입 성공");
-
+            ModelAndView modelAndView = new ModelAndView("/index");
+        if(entity != null) {
+            modelAndView.addObject("message", "회원가입 성공");
+        }else{
+            modelAndView.addObject("message", "회원가입 실패");
+        }
         return modelAndView;
     }
 
