@@ -36,6 +36,7 @@
                         <tr>
                             <th>아이디<span class="star">*</span></th>
                             <td th:text="${member.userid}"></td>
+                            <input type="text" name="userid" th:value="${member.userid}" readonly>
                         </tr>
                         <tr>
                             <th>이름<span class="star">*</span></th>
@@ -86,7 +87,7 @@
 
                     <div class="checkbutton">
                         <input type="button" value="수정하기" class="chkbtninput" onclick="updateCheck()">
-                        <a class="chkbtninput" href="#" style="color:#fff;">회원탈퇴</a>
+                        <a class="chkbtninput" href="/memberDelete.do" style="color:#fff;">회원탈퇴</a>
                     </div>
                 </form>
 

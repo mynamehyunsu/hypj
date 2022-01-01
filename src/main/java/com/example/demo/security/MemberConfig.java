@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableWebSecurity
 //시큐리티를사용한느장치다
 public class MemberConfig extends WebSecurityConfigurerAdapter {
 
@@ -26,6 +28,16 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /* AuthenticationManager Bean 등록 */
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    // 시큐리티가 대신 로그인해주는데 password를 가로채기 하기에
+    // 해당 password가 뭘로 해쉬가 되어 회원가입이 되었는지 알아야
+    // 같은 해쉬로 암호화하여 DB에 있는 해쉬랑 비교 가능
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(service).passwordEncoder(passwordencoder());

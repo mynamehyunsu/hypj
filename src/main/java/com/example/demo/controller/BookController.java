@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,7 +42,6 @@ public class BookController {
 
     @GetMapping("/index")
     public String Index(HttpServletRequest req){
-
 
         System.out.println("메시지 : " + req.getAttribute("message"));
         return "/index.html";
@@ -85,24 +85,6 @@ public class BookController {
 
         return "/view/member/join/join.html";
     }
-
-    @PostMapping("/joinProc.do")
-    public ModelAndView joinProc(MemberDTO dto){
-        //System.out.println(dto.toString());
-        MemberEntity entity = service.save(dto);
-
-
-            ModelAndView modelAndView = new ModelAndView("/index");
-        if(entity != null) {
-            modelAndView.addObject("message", "회원가입 성공");
-        }else{
-            modelAndView.addObject("message", "회원가입 실패");
-        }
-        return modelAndView;
-    }
-
-
-
 
     //서점 소개
     @GetMapping("/introduction.do")

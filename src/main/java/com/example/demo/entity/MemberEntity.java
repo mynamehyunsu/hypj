@@ -4,12 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 //시큐리티가 /loginForm.do 주소 요청이 오면 낚아채서 로그인을 진행시킨다
 //로그인을 진행이 완료가 되면 시큐리티 session을 만들어준다(Security ContextHolder)
@@ -23,6 +26,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@DynamicUpdate
 public class MemberEntity implements UserDetails {
 
     @Id
@@ -90,8 +94,15 @@ public class MemberEntity implements UserDetails {
         return true;
     }
 
-    @Builder
+
     public MemberEntity(String phone, String email, String zipcode, String addr1, String addr2) {
+        this.phone = phone;
+        this.email = email;
+        this.zipcode = zipcode;
+        this.addr1 = addr1;
+        this.addr2 = addr2;
+    }
+    public void update(String phone, String email, String zipcode, String addr1, String addr2){
         this.phone = phone;
         this.email = email;
         this.zipcode = zipcode;

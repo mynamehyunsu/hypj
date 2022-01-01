@@ -5,13 +5,19 @@ import com.example.demo.entity.MemberEntity;
 import com.example.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.lang.reflect.Member;
 import java.util.Optional;
 
 
@@ -65,6 +71,7 @@ public class MemberService implements UserDetailsService {
     public MemberEntity getMember(String username){
        Optional<MemberEntity> member = memberrepo.findByUsername(username);
         return member.get();
+
     }
 
     //dto -> entity
@@ -87,11 +94,44 @@ public class MemberService implements UserDetailsService {
         //암호화된 비번으로 DB에 저장
         MemberEntity entity = memberrepo.save(memberentity);
         return entity;
+    }
 
+    //회원정보 수정
+    @Transactional(rollbackFor = Exception.class)
+    public int update(MemberDTO dto){
+
+        BCryptPasswordEncoder pwdencoder = new BCryptPasswordEncoder();
+        Optional<MemberEntity> memberentity = memberrepo.findByUserid(dto.getUserid());
+
+        if(pwdencoder.matches(dto.getPwd(),memberentity.get().getPwd())) {
+            String phone = dto.getPhone1() + dto.getPhone2() + dto.getPhone3();
+            memberentity.get().update(phone, dto.getEmail(), dto.getZipcode(), dto.getAddr1(), dto.getAddr2());
+
+            return 1;
+        }else{
+            return 2;
+        }
 
     }
 
+    //회원탈퇴
 
+    public int memberDelete(String username){
+
+        //시큐리티 세션 authentication 객체 안의 getPrincipal 메소드호출해서 안에있는 세션아이디
+        //를통해 로그인한 유저 가져온다
+        Optional<MemberEntity> member = memberrepo.findByUsername(username);
+        System.out.println("삭제 메소드실행"+member.get().getUsername());
+        memberrepo.deleteById(member.get().getUserid());
+        System.out.println("이름을 가지고 DB조회한결과 : "+memberrepo.findByUserid(username));
+         if(memberrepo.findByUserid(username).isEmpty()){
+             //SecurityContextHolder.clearContext();
+             //SecurityContextHolder.getContext().setAuthentication(null);
+             return 1;
+         }else{
+             return 2;
+         }
+    }
 
 
 }
