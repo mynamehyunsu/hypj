@@ -12,20 +12,37 @@
                 <nav aria-label="Page navigation example">
 
 
-                    <ul sec:authorize="isAnonymous()" class="pagination" >
+<!--                    <ul sec:authorize="isAnonymous()" class="pagination" >-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/agreeJoin.do}" ><span  style="color:#999;">회원가입</span></a></li>-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/login.do}" ><span  style="color:#999;">로그인</span></a></li>-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span  style="color:#999;">장바구니</span></a></li>-->
+<!--                    </ul>-->
+
+
+
+<!--                    <ul sec:authorize="isAuthenticated()" class="pagination">-->
+<!--                        <li class="page-item" style="line-height:30px; padding-right:10px;"><span sec:authentication="name" style="color:#999;"></span>님 반갑습니다</li>-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/memberUpdate.do}" ><span style="color:#999;">정보수정</span></a></li>-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/logout}" ><span  style="color:#999;">로그아웃</span></a></li>-->
+<!--                        <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span style="color:#999;">장바구니</span></a></li>-->
+<!--                    </ul>-->
+
+
+                    <ul sec:authorize-expr="!isAuthenticated()" class="pagination" >
                         <li class="page-item" ><a class="page-link" th:href="@{/agreeJoin.do}" ><span  style="color:#999;">회원가입</span></a></li>
-                        <li class="page-item" ><a class="page-link" th:href="@{/login.do}" ><span  style="color:#999;">로그인</span></a></li>
+                        <li class="page-item" ><a class="page-link" href="/login.do" ><span  style="color:#999;">로그인</span></a></li>
                         <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span  style="color:#999;">장바구니</span></a></li>
                     </ul>
 
 
 
-                    <ul sec:authorize="isAuthenticated()" class="pagination">
+                    <ul sec:authorize-expr="isAuthenticated()" class="pagination">
                         <li class="page-item" style="line-height:30px; padding-right:10px;"><span sec:authentication="name" style="color:#999;"></span>님 반갑습니다</li>
                         <li class="page-item" ><a class="page-link" th:href="@{/memberUpdate.do}" ><span style="color:#999;">정보수정</span></a></li>
                         <li class="page-item" ><a class="page-link" th:href="@{/logout}" ><span  style="color:#999;">로그아웃</span></a></li>
                         <li class="page-item" ><a class="page-link" th:href="@{/cart.do}" ><span style="color:#999;">장바구니</span></a></li>
                     </ul>
+
 
                 </nav>
             </div>

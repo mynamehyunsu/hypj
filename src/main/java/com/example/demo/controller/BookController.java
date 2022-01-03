@@ -6,6 +6,7 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
@@ -69,12 +70,15 @@ public class BookController {
     public String memberUpdate(Model model, Authentication authentication){
         UserDetails userdetails = (UserDetails) authentication.getPrincipal();
         MemberEntity member = service.getMember(userdetails.getUsername());
-        MemberDTO memberDTO = MemberDTO.builder()
-                .phone1(member.getPhone().substring(0,3))
-                .phone2(member.getPhone().substring(3,7))
-                .phone3(member.getPhone().substring(7,member.getPhone().length()))
-                .build();
-        model.addAttribute("memberDTO",memberDTO);
+//        if(! member.getPhone().isEmpty()) {
+//            MemberDTO memberDTO = MemberDTO.builder()
+//                    .phone1(member.getPhone().substring(0, 3))
+//                    .phone2(member.getPhone().substring(3, 7))
+//                    .phone3(member.getPhone().substring(7, member.getPhone().length()))
+//                    .build();
+//
+//            model.addAttribute("memberDTO", memberDTO);
+//        }
         model.addAttribute("member",member);
         return "/view/member/modify/memberUpdate.html";
     }

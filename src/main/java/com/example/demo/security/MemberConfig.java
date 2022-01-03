@@ -2,27 +2,38 @@ package com.example.demo.security;
 
 
 import com.example.demo.service.MemberService;
+import com.example.demo.service.OAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+//시큐리티를사용한느장치다
 @Configuration
 @RequiredArgsConstructor
-@EnableWebSecurity
-//시큐리티를사용한느장치다
+@EnableWebSecurity//스프링 시큐리티 필터가 스프링 필터체인에 등록된다
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)// 컨트롤러에서쓰이는 secured 어노테이션 활성화
+//각컨트롤러마다 시큐리티를 사용하고싶을떄(권한처리)
+//컨트롤러 매핑 위에 @secured("권한명") 해주면 권한에맞는 계정만갈수잇음(한개만)
+//prePostEnabled = true 이거는 여러권한 접근허용할때 컨트롤러 매핑위에@PreAuthorize(권한명)
 public class MemberConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private final MemberService service;
 
+//    @Autowired
+//    private final OAuthService oauthservice;
+
+
+    //해당 매서드에 리턴되는 오브젝트를 IoC로 등록해준다
     @Bean
     PasswordEncoder passwordencoder(){
         return new BCryptPasswordEncoder();
@@ -57,9 +68,10 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/main").hasRole("ADMIN")
                 .antMatchers("/main").access("hasRole('ADMIN') or hasRole('USER')")
                 .antMatchers("/admin.do").hasRole("ADMIN")//관리자만 접근가능
-                .anyRequest().permitAll();//나머지는 인증없이 접근가능
-
-        http.formLogin()
+                //.anyRequest().authenticated()//나머지요청들은 권한의종류와 상관없이 권한이있어야접근가능
+                .anyRequest().permitAll()//나머지는 인증없이 접근가능
+                .and()
+                .formLogin()
                 .loginPage("/login.do")//내가만든 로그인페이지로 이동
                 //로그인에서 받아오는 userid를 loadUserByUsername 함수의 매개변수랑 매칭시켜주기위함
                 .usernameParameter("userid")
@@ -71,7 +83,16 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
         http.logout()
                 .logoutSuccessUrl("/index")
                 .invalidateHttpSession(true);
+
+
+        //oauth 인증추가
+        http.oauth2Login()
+                .loginPage("/login.do")
+                .defaultSuccessUrl("/index");
+//                        .userInfoEndpoint()
+//                                .userService(oauthservice);
         http.csrf().disable();
+
 
     }
 }

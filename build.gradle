@@ -19,6 +19,11 @@ repositories {
 }
 
 dependencies {
+
+	//개방형인증 라이브러리(OAuth 인증 lib 추가)
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	//시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 

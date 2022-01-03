@@ -109,4 +109,8 @@ public class MemberEntity implements UserDetails {
         this.addr1 = addr1;
         this.addr2 = addr2;
     }
+
+    public void addMemberRole(String role){
+        this.auth=role;
+    }
 }

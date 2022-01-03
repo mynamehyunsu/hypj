@@ -83,7 +83,7 @@ public class MemberRestController {
         ModelAndView modelAndView = new ModelAndView("/index");
         if(result == 1) {
 
-            //SecurityContextHolder.clearContext();
+            SecurityContextHolder.clearContext();
             //SecurityContextHolder.getContext().setAuthentication(null);
             modelAndView.addObject("message", "회원삭제 성공");
         }else{
