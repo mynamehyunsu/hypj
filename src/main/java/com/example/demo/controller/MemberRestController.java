@@ -72,25 +72,7 @@ public class MemberRestController {
         }
         return modelAndView;
     }
-    @GetMapping("/memberDelete.do")
-    public ModelAndView memberDelete(Authentication authentication){
 
-        UserDetails userdetails = (UserDetails)authentication.getPrincipal();
-
-        System.out.println("세션에서 가져온 유저네임"+userdetails.getUsername());
-        int result = service.memberDelete(userdetails.getUsername());
-        System.out.println("result 값 : " + result);
-        ModelAndView modelAndView = new ModelAndView("/index");
-        if(result == 1) {
-
-            SecurityContextHolder.clearContext();
-            //SecurityContextHolder.getContext().setAuthentication(null);
-            modelAndView.addObject("message", "회원삭제 성공");
-        }else{
-            modelAndView.addObject("message", "회원삭제 실패");
-        }
-        return modelAndView;
-    }
 
 
 

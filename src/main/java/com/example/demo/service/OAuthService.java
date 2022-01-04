@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.dto.OAuthDTO;
 import com.example.demo.entity.MemberEntity;
 import com.example.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -64,18 +65,33 @@ public class OAuthService extends DefaultOAuth2UserService {
         set.add(tmp);
         log.info("권한 꺼내기성공");
         //DTO에 memberentity의 값들 넣어주기
-        MemberDTO EntityToDTO = new MemberDTO(
-            memberentity.getUserid(),
-                memberentity.getPassword(),
+
+        //MemberDTO EntityToDTO = new MemberDTO(
+//            memberentity.getUserid(),
+//                memberentity.getPassword(),
+//                set,
+//                oauth2user.getAttributes()
+//        );
+
+        OAuthDTO oauthdto = new OAuthDTO(
+                memberentity.getUserid(),
+                memberentity.getPwd(),
                 set,
                 oauth2user.getAttributes()
         );
+
+        log.info("oauth2user.getAttributes() : " + oauth2user.getAttributes());
+
+        log.info("oauthdto 의 getUserid() : " + oauthdto.getName());
+        log.info("oauthdto.getUsername() : " + oauthdto.getUsername());
+        log.info("oauthdto.getPassword() : " + oauthdto.getPassword());
+        log.info("oauthdto.getAttributes() : " + oauthdto.getAttributes());
         log.info("dto에 DB값 넣어주기 성공");
         //dto를 리턴하는이유는 뷰에서 보여질때 아이디가 이상한숫자로 보여지기때문에
         //구글 이메일 (아이디를)받아와서 화면에 뿌려주기위하여
         //구글로 로그인하면 db에 저장되는데 DB안에 있는 아이디를 가져와 dto에 담고 뷰에 보여주는것
         //OAuth2User타입으로 반환형이 되있지만 dto가되는 이유는 dto에서 상속받았기때문
-        return EntityToDTO;
+        return oauthdto;
     }
 
     //DB저장을 위한 메소드

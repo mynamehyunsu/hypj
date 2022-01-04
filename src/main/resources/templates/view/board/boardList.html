@@ -35,28 +35,15 @@
                     </tr>
                     </thead>
                     <tbody class="fs-6" style="height:35px; text-align:center; line-height:25px;">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="/boardRead.do">Mark</a></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
+                    <tr th:each="dto:${list}">
+                        <th th:text="${dto.num}"></th>
+                        <td><a href="/boardRead.do" th:text="${dto.subject}"></a></td>
+                        <td th:text="${dto.userid}"></td>
+                        <td  th:text="${dto.regdate}"></td>
+                        <td th:text="${dto.count}"></td>
 
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td><a href="/boardRead.do">Mark</a></td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td><a href="/boardRead.do">Mark</a></td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>

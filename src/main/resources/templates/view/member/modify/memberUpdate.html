@@ -36,7 +36,7 @@
                         <tr>
                             <th>아이디<span class="star">*</span></th>
                             <td th:text="${member.userid}"></td>
-                            <input type="text" name="userid" th:value="${member.userid}" readonly>
+                            <input type="hidden" name="userid" th:value="${member.userid}" readonly>
                         </tr>
                         <tr>
                             <th>이름<span class="star">*</span></th>
@@ -59,11 +59,11 @@
                         <tr>
                             <th>휴대전화번호<span class="star">*</span></th>
                             <td>
-                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" th:value="${member.phone.substring(0, 3)}">-
+<!--                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" th:value="${member.phone.substring(0, 3)}">- -->
 
-<!--                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" th:value="${memberDTO.phone1}">- -->
-<!--                                <input type="text" name="phone2" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone2}">- -->
-<!--                                <input type="text" name="phone3" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone3}">-->
+                                <input type="text" name="phone1" class="logininput" style="width:60px" maxlength="3" th:value="${memberDTO.phone1}">-
+                                <input type="text" name="phone2" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone2}">-
+                                <input type="text" name="phone3" class="logininput" style="width:60px" maxlength="4" th:value="${memberDTO.phone3}">
                             </td>
                         </tr>
                         <tr>

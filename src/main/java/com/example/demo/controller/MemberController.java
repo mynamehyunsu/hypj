@@ -6,22 +6,18 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequiredArgsConstructor
-public class BookController {
+public class MemberController {
 
     @Autowired
     private final MemberService service;
@@ -70,17 +66,29 @@ public class BookController {
     public String memberUpdate(Model model, Authentication authentication){
         UserDetails userdetails = (UserDetails) authentication.getPrincipal();
         MemberEntity member = service.getMember(userdetails.getUsername());
-//        if(! member.getPhone().isEmpty()) {
-//            MemberDTO memberDTO = MemberDTO.builder()
-//                    .phone1(member.getPhone().substring(0, 3))
-//                    .phone2(member.getPhone().substring(3, 7))
-//                    .phone3(member.getPhone().substring(7, member.getPhone().length()))
-//                    .build();
-//
-//            model.addAttribute("memberDTO", memberDTO);
-//        }
+
+            MemberDTO memberDTO = MemberDTO.builder()
+                    .phone1(member.getPhone().substring(0, 3))
+                    .phone2(member.getPhone().substring(3, 7))
+                    .phone3(member.getPhone().substring(7, member.getPhone().length()))
+                    .build();
+            model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("member",member);
         return "/view/member/modify/memberUpdate.html";
+    }
+
+    @GetMapping("/memberDelete.do")
+    public String memberDelete2(Authentication authentication){
+
+        UserDetails userdetails = (UserDetails)authentication.getPrincipal();
+
+        System.out.println("세션에서 가져온 유저네임"+userdetails.getUsername());
+        int result = service.memberDelete(userdetails.getUsername());
+        System.out.println("result 값 : " + result);
+        SecurityContextHolder.clearContext();
+
+//        model.addAttribute("message1","회원삭제 성공");
+        return "redirect:/index";
     }
 
     //가입
@@ -107,15 +115,7 @@ public class BookController {
         return "/view/book/bookRead.html";
     }
 
-    //게시판
-    @GetMapping("/boardList.do")
-    public String boardList(){
-        return "/view/board/boardList.html";
-    }
-    @GetMapping("/boardRead.do")
-    public String boardRead(){
-        return "/view/board/boardRead.html";
-    }
+
     //장바구니
     @GetMapping("/cart.do")
     public String cart(){
