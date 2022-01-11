@@ -25,6 +25,7 @@ public class BoardController {
     public String boardList(Model model)
     {
         Page<BoardEntity> list = boardService.getBoardList(0,10);
+        System.out.println("리스트 가져오기 성공");
         model.addAttribute("list",list);
         return "/view/board/boardList.html";
     }
