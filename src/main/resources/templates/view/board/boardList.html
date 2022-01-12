@@ -39,7 +39,7 @@
                         <th th:text="${dto.num}"></th>
                         <td><a href="/boardRead.do" th:text="${dto.subject}"></a></td>
                         <td th:text="${dto.memberentity.userid}"></td>
-                        <td  th:text="${dto.createDate.toString()}"></td>
+                        <td th:text="${dto.createDate.toString().substring(0,10)}"></td>
                         <td th:text="${dto.count}"></td>
 
                     </tr>
