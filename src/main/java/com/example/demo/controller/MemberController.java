@@ -65,9 +65,11 @@ public class MemberController {
     @GetMapping("/memberUpdate.do")
     public String memberUpdate(Model model, Authentication authentication){
         UserDetails userdetails = (UserDetails) authentication.getPrincipal();
+        System.out.println(userdetails.getUsername());
         MemberEntity member = service.getMember(userdetails.getUsername());
 
             MemberDTO memberDTO = MemberDTO.builder()
+                    .username(member.getName())
                     .phone1(member.getPhone().substring(0, 3))
                     .phone2(member.getPhone().substring(3, 7))
                     .phone3(member.getPhone().substring(7, member.getPhone().length()))

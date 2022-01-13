@@ -57,16 +57,8 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //인증안받아도 접근가능
-//                .antMatchers("/index").permitAll()//(메인페이지)
-//                .antMatchers("/login.do","/agreeJoin.do","/memberFind.do").permitAll()//(로그인)
-//                .antMatchers("/join.do").permitAll()//(가입)
-//                .antMatchers("/boardList.do").permitAll()//(게시판)
-//                .antMatchers("/introduction.do").permitAll()//(서점 소개)
-//                .antMatchers("/mainBookList.do","/bookRead.do").permitAll()//(책소개)
-//                .antMatchers("/boardRead.do")
-                //.antMatchers("/main").hasRole("ADMIN")
-                .antMatchers("/main").access("hasRole('ADMIN') or hasRole('USER')")
+
+                .antMatchers("/boardPost.do ").access("hasRole('ADMIN') or hasRole('USER')")
                 .antMatchers("/admin.do").hasRole("ADMIN")//관리자만 접근가능
                 //.anyRequest().authenticated()//나머지요청들은 권한의종류와 상관없이 권한이있어야접근가능
                 .anyRequest().permitAll()//나머지는 인증없이 접근가능

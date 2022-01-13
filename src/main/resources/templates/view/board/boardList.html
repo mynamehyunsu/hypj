@@ -47,9 +47,56 @@
                     </tbody>
                 </table>
             </div>
-            <th:block th:replace="/common/paging::pagingFragment"></th:block>
+<!--            <th:block th:replace="/common/paging::pagingFragment"</th:block>-->
+
+            <div style="float: left; width:100%; ">
+                <nav aria-label="Page navigation example" >
+                    <ul class="pagination  justify-content-center"  >
+                        <th:block th:if="${nowBlock>1}">
+                            <li class="page-item me-1">
+                                <a class="page-link " th:href="@{/boardList.do(nowPage=(${PS}-1))}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </th:block>
+                        <!-- 한블럭당 표시할 페이지 수-->
+                        <th:block th:each="num:${#numbers.sequence(PS,PE-1)}">
+                            <li class="page-item me-1">
+                                <a class="page-link " th:href="@{/boardList.do(nowPage=${num})}" th:text="${num}"></a>
+                            </li>
+                        </th:block>
+                        <th:block th:if="${totalBlock>nowBlock}">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{/boardList.do(nowPage=${PE})}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </th:block>
+                    </ul>
+                </nav>
+            </div>
+            <div style="float:left; width:100%;">
+                <nav class="navbar navbar-light " >
+                    <div class="container-fluid  justify-content-center">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="제목 입력하세요" aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <div style="float:left; width:100%;">
+                <nav class="navbar navbar-light " >
+                    <div class="container-fluid  justify-content-end">
+                            <a class="btn btn-secondary me-2" href="/boardPost.do">글쓰기</a>
+                            <a class="btn btn-secondary" th:href="@{/boardList.do(nowPage=1)}">처음으로</a>
+                    </div>
+                </nav>
+            </div>
         </div>
+
     </div>
+
 </th:block>
 </body>
 </html>

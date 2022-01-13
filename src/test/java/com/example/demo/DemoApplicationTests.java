@@ -7,6 +7,7 @@ import com.example.demo.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -35,10 +36,13 @@ class DemoApplicationTests {
 //
 //	@Autowired
 //	private MemberRepository memberrepo;
-
+//
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
+//
 //	@Test
 //	void insertMember(){
-//		for(int i=1;i<=100; i++){
+//		for(int i=101;i<=300; i++){
 //			MemberEntity member = MemberEntity.builder()
 //					.userid("아이디"+i)
 //					.username("이름"+i)
@@ -47,7 +51,7 @@ class DemoApplicationTests {
 //					.zipcode("우편번호"+i)
 //					.phone("0101111222"+Integer.toString(i))
 //					.email("aaa"+i+"naver.com")
-//					.pwd("1234")
+//					.pwd(passwordEncoder.encode("1234"))
 //					.auth("ROLE_USER")
 //					.build();
 //			memberrepo.save(member);

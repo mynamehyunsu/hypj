@@ -38,10 +38,10 @@ public class MemberService implements UserDetailsService {
        Optional<MemberEntity> result = memberrepo.findByUserid(userid);
         if(result.isPresent()){
             //Security Session(내부에 Authentication(내부에 result.get())이들어감) > Authentication > UserDetails(MemberEntity)
-//            System.out.println("받아온유저아이디 : " + userid);
-//            System.out.println("아이디를 통해 가져온 계정"+result.get());
-//            System.out.println("아이디를통해받아온계정아이디 : " +result.get().getUserid());
-//            System.out.println("비밀번호 : " + result.get().getPwd());
+            System.out.println("받아온유저아이디 : " + userid);
+            System.out.println("아이디를 통해 가져온 계정"+result.get());
+            System.out.println("아이디를통해받아온계정아이디 : " +result.get().getUserid());
+            System.out.println("비밀번호 : " + result.get().getPwd());
             //세션에 정보들어감
 //            System.out.println(result.get().getUserid());
 //            System.out.println(result.get().getUsername());
@@ -68,8 +68,8 @@ public class MemberService implements UserDetailsService {
 
     }
 
-    public MemberEntity getMember(String username){
-       Optional<MemberEntity> member = memberrepo.findByUsername(username);
+    public MemberEntity getMember(String userid){
+       Optional<MemberEntity> member = memberrepo.findByUserid(userid);
         return member.get();
 
     }

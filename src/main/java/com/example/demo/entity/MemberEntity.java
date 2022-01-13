@@ -64,8 +64,11 @@ public class MemberEntity implements UserDetails {
 
         return roles;
     }
+    public String getName(){
+        return username;
+    }
 
-    public String getUserid(){
+    public String getUsername(){
         return userid;
     }
 
