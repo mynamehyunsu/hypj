@@ -1,10 +1,9 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.demo.dto.MemberDTO;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -116,4 +115,5 @@ public class MemberEntity implements UserDetails {
     public void addMemberRole(String role){
         this.auth=role;
     }
+
 }

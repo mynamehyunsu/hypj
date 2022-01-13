@@ -58,7 +58,7 @@ public class MemberConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-                .antMatchers("/boardPost.do ").access("hasRole('ADMIN') or hasRole('USER')")
+                .antMatchers("/boardPost.do").access("hasRole('ADMIN') or hasRole('USER')")
                 .antMatchers("/admin.do").hasRole("ADMIN")//관리자만 접근가능
                 //.anyRequest().authenticated()//나머지요청들은 권한의종류와 상관없이 권한이있어야접근가능
                 .anyRequest().permitAll()//나머지는 인증없이 접근가능
