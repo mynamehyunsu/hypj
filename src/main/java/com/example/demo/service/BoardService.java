@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,4 +53,18 @@ public class BoardService {
 
         return board;
     }
+
+    public BoardEntity getBoard(Long num){
+        Optional<BoardEntity> board = boardrepo.findById(num);
+        System.out.println("num을 통해 가져온 게시판목록"+board.get());
+        return board.get();
+    }
+
+    public void Upcount(Long num){
+        Optional<BoardEntity> board =boardrepo.findById(num);
+        board.get().setCount(board.get().getCount()+1);
+        boardrepo.save(board.get());
+        System.out.println("upcount함수실행");
+    }
+
 }

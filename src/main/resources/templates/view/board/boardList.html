@@ -51,7 +51,7 @@
                     <tbody class="fs-6" style="height:35px; text-align:center; line-height:25px;">
                     <tr th:each="dto:${list}">
                         <th th:text="${dto.num}"></th>
-                        <td><a href="/boardRead.do" th:text="${dto.subject}"></a></td>
+                        <td><a th:href="@{/boardRead.do(num=${dto.num},nowPage=${nowPage})}" th:text="${dto.subject}"></a></td>
                         <td th:text="${dto.memberentity.userid}"></td>
                         <td th:text="${dto.createDate.toString().substring(0,10)}"></td>
                         <td th:text="${dto.count}"></td>

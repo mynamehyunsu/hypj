@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dto.BoardDTO;
 import com.example.demo.dto.PageDTO;
 import com.example.demo.entity.BoardEntity;
 import com.example.demo.repository.BoardRepository;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,6 +65,7 @@ public class BoardController {
         model.addAttribute("PS",pageStart);
         model.addAttribute("PE",pageEnd);
         model.addAttribute("totalBlock",totalBlock);
+        model.addAttribute("nowPage",nowPage);
         return "/view/board/boardList.html";
     }
 
@@ -75,7 +78,20 @@ public class BoardController {
 
 
     @GetMapping("/boardRead.do")
-    public String boardRead(){
+    //키값으로 받아온 값이없으면 ""으로 기본값대체 required꼭명시
+    public String boardRead(@RequestParam(value = "num",required = false,defaultValue="") Long num,
+                            @RequestParam(value="nowPage",required = false,defaultValue = "") int nowPage,
+                            Model model){
+        System.out.println("@RequestParam('num')으로 받아온값 : " + num);
+        boardService.Upcount(num);
+
+        BoardEntity board =boardService.getBoard(num);
+
+        System.out.println("board에 담긴 내용" + board.getMemberentity().getUserid());
+        System.out.println("getUsername"+board.getMemberentity().getUsername());
+        System.out.println("getname"+board.getMemberentity().getName());
+        model.addAttribute("board",board);
+        model.addAttribute("nowPage",nowPage);
         return "/view/board/boardRead.html";
     }
 }
