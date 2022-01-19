@@ -54,17 +54,10 @@
                 <div class="card" style="border-top: 1px solid #ededed; border-bottom: 1px solid #ededed; margin:20px 0 20px;">
                     <div class="card-header fs-6" style="text-align:center; font-weight:bold;">댓글 리스트</div>
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between" style="line-height:33px; font-size:13px;">
-                            <div>댓글 내용</div>
+                        <li th:each="b:${board.reply}" class="list-group-item d-flex justify-content-between" style="line-height:33px; font-size:13px;">
+                            <div th:text="${b.content}"></div>
                             <div class="d-flex">
-                                <div >작성자 : 유저이름</div>&nbsp;&nbsp;
-                                <button type="button" class="btn btn-primary" style="height:33px; line-height:20px;">삭제</button>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between" style="line-height:33px; font-size:13px;">
-                            <div>댓글 내용</div>
-                            <div class="d-flex">
-                                <div >작성자 : 유저이름</div>&nbsp;&nbsp;
+                                <div >작성자 : <span th:text="${b.memberentity.name}"></span></div>&nbsp;&nbsp;
                                 <button type="button" class="btn btn-primary" style="height:33px; line-height:20px;">삭제</button>
                             </div>
                         </li>

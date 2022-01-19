@@ -57,6 +57,7 @@ public class BoardService {
     public BoardEntity getBoard(Long num){
         Optional<BoardEntity> board = boardrepo.findById(num);
         System.out.println("num을 통해 가져온 게시판목록"+board.get());
+        System.out.println("board.get().getReply(): "+board.get().getReply());
         return board.get();
     }
 

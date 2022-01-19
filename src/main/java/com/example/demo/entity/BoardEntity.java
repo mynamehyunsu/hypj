@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -17,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name="board_tbl")
 @Builder
+@ToString(exclude = "reply")
 public class BoardEntity {
 
     @Id
@@ -42,6 +41,7 @@ public class BoardEntity {
     private int count;
 
     @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties({"boardentity","memberentity"})
     private List<BoardReplyEntity> reply;
     //fetch = FetchType.LAZY 필요할때 들고오겠다(답글테이블에 펼치기 버튼을 누르면 가져오도록)
     //mappedBy 연관관계의 주인이아니다(난FK가아니다)DB에 칼럼을 만들지마라

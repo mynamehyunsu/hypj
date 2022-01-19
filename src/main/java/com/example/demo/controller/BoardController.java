@@ -91,6 +91,7 @@ public class BoardController {
         boardService.Upcount(num);
 
         BoardEntity board =boardService.getBoard(num);
+        System.out.println("reply비어잇는지 "+board.getReply().isEmpty());
 
         System.out.println("board에 담긴 내용" + board.getMemberentity().getUserid());
         System.out.println("getUsername"+board.getMemberentity().getUsername());
