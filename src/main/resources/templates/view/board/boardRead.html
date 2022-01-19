@@ -42,17 +42,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="container-fluid  justify-content-center">
 
-                </div>
-                <div style="float:left; width:100%; padding:30px 0 30px;">
-                    <nav class="navbar navbar-light " >
-                        <div class="container-fluid  justify-content-center">
-                            <a href="#" class="btn btn-dark me-3">답변하기</a>
-                            <a th:href="@{/boardList.do(nowPage=${nowPage})}" class="btn btn-secondary">목록으로</a>
-                        </div>
-                    </nav>
-                </div>
                 <div class="input-group" style="margin-bottom:20px;">
                     <div class="input-group-text">답변</div>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
@@ -80,6 +70,14 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div style="float:left; width:100%; padding:30px 0 30px;">
+                <nav class="navbar navbar-light " >
+                    <div class="container-fluid  justify-content-center">
+                        <a th:href="@{/boardDelete.do(num=${board.num},nowPage=${nowPage})}" class="btn btn-dark me-2" >삭제하기</a>
+                        <a th:href="@{/boardList.do(nowPage=${nowPage})}" class="btn btn-secondary">목록으로</a>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>

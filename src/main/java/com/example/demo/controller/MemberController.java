@@ -68,13 +68,27 @@ public class MemberController {
         System.out.println(userdetails.getUsername());
         MemberEntity member = service.getMember(userdetails.getUsername());
 
-            MemberDTO memberDTO = MemberDTO.builder()
-                    .username(member.getName())
-                    .phone1(member.getPhone().substring(0, 3))
-                    .phone2(member.getPhone().substring(3, 7))
-                    .phone3(member.getPhone().substring(7, member.getPhone().length()))
-                    .build();
-            model.addAttribute("memberDTO", memberDTO);
+
+            if(member.getPhone() == null){
+                MemberDTO memberDTO = MemberDTO.builder()
+                        .username(member.getName())
+                        .build();
+                model.addAttribute("memberDTO", memberDTO);
+            }else if(member.getPhone() !=null
+                    && member.getAddr1() != null
+                    && member.getAddr2() != null
+                    && member.getEmail() != null
+                    && member.getZipcode() != null
+            ){
+                MemberDTO memberDTO = MemberDTO.builder()
+                        .username(member.getName())
+                        .phone1(member.getPhone().substring(0, 3))
+                        .phone2(member.getPhone().substring(3, 7))
+                        .phone3(member.getPhone().substring(7, member.getPhone().length()))
+                        .build();
+                model.addAttribute("memberDTO", memberDTO);
+            }
+
         model.addAttribute("member",member);
         return "/view/member/modify/memberUpdate.html";
     }

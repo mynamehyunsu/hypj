@@ -67,4 +67,7 @@ public class BoardService {
         System.out.println("upcount함수실행");
     }
 
+    public void delete(Long num) {
+        boardrepo.deleteById(num);
+    }
 }

@@ -13,8 +13,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,11 +34,13 @@ public class BoardController {
     @GetMapping("/boardList.do")
     public String boardList(Model model, PageDTO pagedto)
     {
+
         int nowPage = 1;//기본현재페이지
         System.out.println("nowPage : " + nowPage);
         if(pagedto.getNowPage() != 0){
             nowPage =pagedto.getNowPage();
         }
+        System.out.println("/boardList.do에서 모델로받아온 nowPage : " + model.getAttribute("nowPage"));
         Page<BoardEntity> list = boardService.getBoardList(nowPage-1,10);
 
 
@@ -93,5 +98,16 @@ public class BoardController {
         model.addAttribute("board",board);
         model.addAttribute("nowPage",nowPage);
         return "/view/board/boardRead.html";
+    }
+
+    @GetMapping("/boardDelete.do")
+    public String boardDelete(@RequestParam(value="num",required = false,defaultValue = "") Long num,
+                              @RequestParam(value="nowPage",required = false,defaultValue = "") int nowPage,
+                              Model model)
+    {
+
+        boardService.delete(num);
+
+        return "redirect:/boardList.do?nowPage="+nowPage;
     }
 }
