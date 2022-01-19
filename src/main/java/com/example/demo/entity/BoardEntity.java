@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.core.annotation.Order;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -42,6 +43,7 @@ public class BoardEntity {
 
     @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER)
 //    @JsonIgnoreProperties({"boardentity","memberentity"})
+    @OrderBy("id desc")
     private List<BoardReplyEntity> reply;
     //fetch = FetchType.LAZY 필요할때 들고오겠다(답글테이블에 펼치기 버튼을 누르면 가져오도록)
     //mappedBy 연관관계의 주인이아니다(난FK가아니다)DB에 칼럼을 만들지마라

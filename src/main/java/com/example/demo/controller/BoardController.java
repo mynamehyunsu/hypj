@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -86,7 +87,8 @@ public class BoardController {
     //키값으로 받아온 값이없으면 ""으로 기본값대체 required꼭명시
     public String boardRead(@RequestParam(value = "num",required = false,defaultValue="") Long num,
                             @RequestParam(value="nowPage",required = false,defaultValue = "") int nowPage,
-                            Model model){
+                            Model model,
+                            HttpServletRequest req){
         System.out.println("@RequestParam('num')으로 받아온값 : " + num);
         boardService.Upcount(num);
 
