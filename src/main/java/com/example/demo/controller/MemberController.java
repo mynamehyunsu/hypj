@@ -120,16 +120,7 @@ public class MemberController {
         return "/view/introduction/bookIntro.html";
     }
 
-    //책소개
-    @GetMapping("/mainBookList.do")
-    public String mainBookList(){
-        return "/view/book/mainBookList.html";
-    }
 
-    @GetMapping("/bookRead.do")
-    public String bookRead(){
-        return "/view/book/bookRead.html";
-    }
 
 
     //장바구니

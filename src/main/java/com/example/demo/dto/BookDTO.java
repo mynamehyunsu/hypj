@@ -16,5 +16,6 @@ public class BookDTO {
     private int price;
     private String filename;
     private String sfilename;
-    private String folerpath;
+    private String folderpath;
+    private int count;
 }
