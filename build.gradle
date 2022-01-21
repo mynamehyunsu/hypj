@@ -20,6 +20,9 @@ repositories {
 
 dependencies {
 
+    //파일 썸네일 라이브러리 추가
+	implementation group:'net.coobird',name:'thumbnailator',version:'0.4.12'
+
 	//개방형인증 라이브러리(OAuth 인증 lib 추가)
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 

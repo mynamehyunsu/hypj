@@ -33,119 +33,21 @@
                         <a href="#" class="itembtn">구매하기</a>
                     </form>
                 </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book2.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book3.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book4.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book5.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book6.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book7.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book8.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book9.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book10.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book11.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
-
-                <li class="itemli">
-                    <form class="itemform">
-                        <img src="/img/Book/book12.jpg">
-                        <h3>공단기 실전동형모의고사 영어</h3>
-                        <em><strong>10,000</strong>원</em>
-                        <a href="#" class="itembtn">장바구니</a>
-                        <a href="#" class="itembtn">구매하기</a>
-                    </form>
-                </li>
             </ul>
         </div>
         <th:block th:replace="/common/paging::pagingFragment"></th:block>
+        <div style="float:left; width:100%;">
+            <nav class="navbar navbar-light " >
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')" class="container-fluid  justify-content-end">
+                    <a  class="btn btn-secondary me-2" href="/bookPost.do">글쓰기</a>
+                    <a class="btn btn-secondary" th:href="@{/mainBookList.do(nowPage=1)}">처음으로</a>
+                </div>
+                <div sec:authorize="! hasRole('ROLE_ADMIN')" class="container-fluid  justify-content-end">
+                    <a class="btn btn-secondary" th:href="@{/mainBookList.do(nowPage=1)}">처음으로</a>
+                </div>
+            </nav>
+        </div>
     </div>
 </div>
 </th:block>
