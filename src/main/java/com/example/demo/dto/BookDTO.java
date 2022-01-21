@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class BookDTO {
+    private int num;
     private String subject;
     private String content;
     private int price;
