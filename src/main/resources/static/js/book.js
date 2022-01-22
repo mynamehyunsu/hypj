@@ -85,8 +85,8 @@ let index = {
             //버튼활성화
             $("#btn-save").prop("disabled",false);
             alert("파일업로드 성공");
-            console.log(result);
-//            location.href="/mainBookList.do";
+            //console.log(result);
+            location.href="/mainBookList.do";
         }).fail(function(){
 
         });
