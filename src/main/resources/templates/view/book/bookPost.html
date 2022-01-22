@@ -20,20 +20,23 @@
         )">
         </th:block>
         <link href="/css/scontents.css" type="text/css" rel="stylesheet">
+
         <div class="scontent">
             <div class="itemtitle">
                 <h1>신작 등록</h1>
             </div>
             <div class="itemlist" >
 
-                <form method="post" action="/bookPostProc.do" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" id="uploadForm">
 
-                    <input type="text" name="subject" placeholder="제목입력" class="form-control mb-3">
-                    <input class="form-control mb-3" type="file" name="file" multiple>
-                    <input type="number" class="form-control mb-3 " step="100" name="price">
-                    <textarea name="content" class="form-control mb-3" ></textarea>
-                    <input type="submit" value="전송" class="form-control mt-3 btn-primary">
+                    <input type="text" id="subject" name="subject" placeholder="제목입력" class="form-control mb-3">
+                    <input class="form-control mb-3" type="file" id="file" name="file" multiple>
+                    <input type="number" class="form-control mb-3 " step="100" id="price" name="price">
+                    <textarea id="content" name="content" class="form-control mb-3" ></textarea>
+<!--                    <input type="submit" value="전송" class="form-control mt-3 btn-primary">-->
+                    <button id ="btn-save" class=" mt-3 btn btn-primary" style="width:100%;">글 등록</button>
                 </form>
+
                 <nav class="navbar navbar-light " >
                     <div class="mt-3 container-fluid  justify-content-end">
                         <input type="button" onclick="history.go(-1)" value="이전으로" class="btn btn-secondary">
@@ -41,6 +44,7 @@
                 </nav>
             </div>
         </div>
+        <script src="/js/book.js"></script>
     </div>
 </th:block>
 </body>

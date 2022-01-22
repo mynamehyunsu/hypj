@@ -7,15 +7,18 @@ import com.example.demo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+//스프링이 컴포넌트 스캔을 통해서 Bean등록을 해줌 IoC를 해준다
 @RequiredArgsConstructor
 public class BookService {
 
     @Autowired
     private final BookRepository bookrepo;
 
-    public BookEntity postBook(BookDTO dto){
+    @Transactional
+    public int postBook(BookDTO dto){
         BookEntity bookentity = BookEntity.builder()
                 .subject(dto.getSubject())
                 .content(dto.getContent())
@@ -24,7 +27,13 @@ public class BookService {
                 .sfilename(dto.getSfilename())
                 .folderPath(dto.getFolderpath())
                 .build();
-        BookEntity book =bookrepo.save(bookentity);
-        return book;
+        try {
+            bookrepo.save(bookentity);
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("BookService : postBook() : "+e.getMessage());
+        }
+        return -1;
     }
 }

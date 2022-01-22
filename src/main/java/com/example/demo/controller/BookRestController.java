@@ -1,11 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.BookDTO;
+import com.example.demo.dto.ResponseDTO;
 import com.example.demo.entity.BookEntity;
 import com.example.demo.service.BookService;
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,9 +35,9 @@ public class BookRestController {
     private final BookService bookservice;
 
     @PostMapping("/bookPostProc.do")
-    public ModelAndView bookPostProc(BookDTO dto,
-                               @RequestParam("file") MultipartFile file,
-                               RedirectAttributes rttr
+    public ResponseDTO<Integer> bookPostProc(BookDTO dto,
+                                    @RequestParam("file") MultipartFile file
+
     ) {
         try {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename()) ;//파일원본이름
@@ -71,15 +73,9 @@ public class BookRestController {
         }catch(Exception e ){
             e.printStackTrace();
         }
-            BookEntity book = bookservice.postBook(dto);
+        bookservice.postBook(dto);
 
-        ModelAndView modelAndView = new ModelAndView("/index");
-        if(book != null) {
-            modelAndView.addObject("message", "글쓰기 성공");
-        }else{
-            modelAndView.addObject("message", "글쓰기 실패");
-        }
-        return modelAndView;
+        return new ResponseDTO<Integer>(HttpStatus.OK.value(),1);
 
     }
 
