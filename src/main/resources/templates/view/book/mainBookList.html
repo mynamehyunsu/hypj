@@ -28,7 +28,7 @@
                 <li class="itemli" th:each="dto: ${list}">
                     <form class="itemform">
                         <!--이미지 불러오는 경로 : /IMG/+폴더경로+/섬네일파일경로-->
-                        <a th:href="@{/bookRead.do(num=${dto.num})}" > <img th:src="@{/IMG/}+${dto.folderPath}+@{/}+${dto.sfilename}"</a>
+                        <a th:href="@{/bookRead.do(num=${dto.num},nowPage=${nowPage})}" > <img th:src="@{/IMG/}+${dto.folderPath}+@{/}+${dto.sfilename}"</a>
                         <h3 th:text="${dto.subject}"></h3>
                         <em><strong th:text="${dto.price}"></strong>원</em>
                         <a href="#" class="itembtn">장바구니</a>

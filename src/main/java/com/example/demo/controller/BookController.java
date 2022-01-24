@@ -89,7 +89,12 @@ public class BookController {
     }
 
     @GetMapping("/bookRead.do")
-    public String bookRead(){
+    public String bookRead(@RequestParam(value="num",required = false,defaultValue = "") int num,
+                           @RequestParam(value="nowPage",required = false,defaultValue = "") int nowPage,
+                           Model model){
+
+        System.out.println("@RequestParam('num')으로 받아온값 : " + num);
+        System.out.println("@RequestParam('nowPage')으로 받아온값 : " + nowPage);
 
 
 

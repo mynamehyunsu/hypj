@@ -13,6 +13,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 //스프링이 컴포넌트 스캔을 통해서 Bean등록을 해줌 IoC를 해준다
 @RequiredArgsConstructor
@@ -49,6 +51,11 @@ public class BookService {
         Pageable pageable = PageRequest.of(page,size,sort);
         Page<BookEntity> list = bookrepo.findAll(pageable);
         return list;
+    }
+
+    public void Upcount(int num){
+        Optional<BookEntity> book =bookrepo.findById(num);
+
     }
 
 
