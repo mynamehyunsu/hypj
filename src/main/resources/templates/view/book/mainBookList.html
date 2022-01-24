@@ -7,18 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-<th:block layout:fragment="js">
-    <script th:inline="javascript">
 
-        /*<![CDATA[*/
-<!--        alert("자바스크립트호출");-->
-            let name = /*[[ ${message} ]]*/;
-            if(name!=null)
-                alert(name);
-        /*]]*/
-    </script>
-
-</th:block>
 <th:block layout:fragment="MemContent">
 
 <div style="padding:50px 0 0;">
@@ -36,21 +25,58 @@
         </div>
         <div class="itemlist" >
             <ul>
-                <li class="itemli" >
+                <li class="itemli" th:each="dto: ${list}">
                     <form class="itemform">
-                        <a href="/bookRead.do"><img src="/img/onepiece/onepiece100.jpg"></a>
-                        <h3>원피스 100 : 패왕색</h3>
-                        <em><strong>10,000</strong>원</em>
+                        <!--이미지 불러오는 경로 : /IMG/+폴더경로+/섬네일파일경로-->
+                        <a th:href="@{/bookRead.do(num=${dto.num})}" > <img th:src="@{/IMG/}+${dto.folderPath}+@{/}+${dto.sfilename}"</a>
+                        <h3 th:text="${dto.subject}"></h3>
+                        <em><strong th:text="${dto.price}"></strong>원</em>
                         <a href="#" class="itembtn">장바구니</a>
                         <a href="#" class="itembtn">구매하기</a>
                     </form>
                 </li>
             </ul>
         </div>
-        <th:block th:replace="/common/paging::pagingFragment"></th:block>
+        <!--페이징자리-->
+
+        <div style="float: left; width:100%; ">
+            <nav aria-label="Page navigation example" >
+                <ul class="pagination  justify-content-center"  >
+                    <th:block th:if="${nowBlock>1}">
+                        <li class="page-item me-1">
+                            <a class="page-link " th:href="@{/mainBookList.do(nowPage=(${PS}-1))}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </th:block>
+                    <!-- 한블럭당 표시할 페이지 수-->
+                    <th:block th:each="num:${#numbers.sequence(PS,PE-1)}">
+                        <li class="page-item me-1">
+                            <a class="page-link " th:href="@{/mainBookList.do(nowPage=${num})}" th:text="${num}"></a>
+                        </li>
+                    </th:block>
+                    <th:block th:if="${totalBlock>nowBlock}">
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/mainBookList.do(nowPage=${PE})}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </th:block>
+                </ul>
+            </nav>
+        </div>
         <div style="float:left; width:100%;">
             <nav class="navbar navbar-light " >
-
+                <div class="container-fluid  justify-content-center">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="제목 입력하세요" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div style="float:left; width:100%;">
+            <nav class="navbar navbar-light " >
                 <div sec:authorize="hasRole('ROLE_ADMIN')" class="container-fluid  justify-content-end">
                     <a  class="btn btn-secondary me-2" href="/bookPost.do">글쓰기</a>
                     <a class="btn btn-secondary" th:href="@{/mainBookList.do(nowPage=1)}">처음으로</a>
@@ -60,6 +86,10 @@
                 </div>
             </nav>
         </div>
+    </div>
+
+
+
     </div>
 </div>
 </th:block>

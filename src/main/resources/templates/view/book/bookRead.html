@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding-right:50px;">
-                    <a class="btn btn-secondary " href="/mainBookList.do">목록으로</a>
+                    <a class="btn btn-secondary " th:href="@{/mainBookList.do(num=${dto.num})}">목록으로</a>
                     <a class="btn btn-danger " href="#">구매하기</a>
                     <a class="btn btn-dark " href="#">장바구니</a>
                 </div>

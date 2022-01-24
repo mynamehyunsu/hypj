@@ -63,7 +63,7 @@ public class BookRestController {
             File ThumbnailFile = new File(ThumbnailSaveName);
 
             //썸네일 파일 저장하기(해당경로에 원본파일경로,썸네일파일경로,너비,높이//파일명은 객체형으로 바꿔서 전달해야함)
-            Thumbnailator.createThumbnail(filePath.toFile(),ThumbnailFile,100,100);
+            Thumbnailator.createThumbnail(filePath.toFile(),ThumbnailFile,190,230);
 
             dto.setFilename(uuidFileName);
             dto.setSfilename(sUuidFileName);

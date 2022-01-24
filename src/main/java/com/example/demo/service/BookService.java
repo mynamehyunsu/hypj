@@ -6,6 +6,10 @@ import com.example.demo.entity.BookEntity;
 import com.example.demo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,4 +40,16 @@ public class BookService {
         }
         return -1;
     }
+
+    public Page<BookEntity> getBookList(int page,int size){
+        //내림차순 정렬
+        Sort sort = Sort.by("num").descending();
+
+        //페이지당 게시물수
+        Pageable pageable = PageRequest.of(page,size,sort);
+        Page<BookEntity> list = bookrepo.findAll(pageable);
+        return list;
+    }
+
+
 }

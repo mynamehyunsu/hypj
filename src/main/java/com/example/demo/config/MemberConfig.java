@@ -1,8 +1,7 @@
-package com.example.demo.security;
+package com.example.demo.config;
 
 
 import com.example.demo.service.MemberService;
-import com.example.demo.service.OAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
