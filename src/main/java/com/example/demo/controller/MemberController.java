@@ -43,7 +43,7 @@ public class MemberController {
         return "/view/adminMain.html";
     }
 
-    @GetMapping("/index")
+    @GetMapping(value={"/index","/"})
     public String Index(HttpServletRequest req,Model model){
 
         Page<BookEntity> list = bookservice.getBookList(0,3);
