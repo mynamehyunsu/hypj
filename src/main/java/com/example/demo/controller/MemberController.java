@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.MemberDTO;
+import com.example.demo.entity.BookEntity;
 import com.example.demo.entity.MemberEntity;
 import com.example.demo.repository.MemberRepository;
+import com.example.demo.service.BookService;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +28,9 @@ public class MemberController {
     @Autowired
     private final MemberRepository memberrepo;
 
+    @Autowired
+    private final BookService bookservice;
+
 
     //메인페이지
     @GetMapping("/main")
@@ -38,9 +44,10 @@ public class MemberController {
     }
 
     @GetMapping("/index")
-    public String Index(HttpServletRequest req){
+    public String Index(HttpServletRequest req,Model model){
 
-        System.out.println("메시지 : " + req.getAttribute("message"));
+        Page<BookEntity> list = bookservice.getBookList(0,3);
+        model.addAttribute("list",list);
         return "/index.html";
 
     }

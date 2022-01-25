@@ -3,16 +3,11 @@
 <th:block th:fragment="homemaincontent">
     <link href="/css/maincontent.css" type="text/css" rel="stylesheet">
     <div class="mban_zone">
-        <ul class="mban_list">
-            <li>
-                <a href="#"><img src="/img/onepiece/onepiece100.jpg" class="mban_img"></a>
+        <ul class="mban_list" >
+            <li th:each="dto : ${list}">
+                 <img th:src="@{/IMG/}+${dto.folderPath}+@{/}+${dto.filename}" class="mban_img">
             </li>
-            <li>
-                <a href="#"><img src="/img/onepiece/onepiece99.jpg" class="mban_img"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/img/onepiece/onepiece98.jpg" class="mban_img"></a>
-            </li>
+
         </ul>
     </div>
     <div class="column">

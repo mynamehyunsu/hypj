@@ -69,6 +69,7 @@ public class BoardService {
     }
 
     public void delete(Long num) {
+
         boardrepo.deleteById(num);
     }
 }

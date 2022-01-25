@@ -41,7 +41,8 @@ public class BoardEntity {
     @ColumnDefault("0")//조회수
     private int count;
 
-    @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    //cascade = CascadeType.PERSIST게시글 지울때 댓글까지 다지우겟다
 //    @JsonIgnoreProperties({"boardentity","memberentity"})
     @OrderBy("id desc")
     private List<BoardReplyEntity> reply;

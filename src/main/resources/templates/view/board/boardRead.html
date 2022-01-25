@@ -8,7 +8,7 @@
 </head>
 <body>
 <th:block layout:fragment="MemContent">
-    <script type="text/javascript" src="/js/board.js" ></script>
+<!--    <script type="text/javascript" src="/js/board.js" ></script>-->
     <div style="padding:50px 0 0;">
         <th:block th:replace="/common/sidebar::sidebar(
         ~{/menu/sidebarMenu/boardMenu::menu1},
@@ -68,13 +68,13 @@
             <div style="float:left; width:100%; padding:30px 0 30px;">
                 <nav class="navbar navbar-light " >
                     <div class="container-fluid  justify-content-center">
-                        <a th:href="@{/boardUpdate.do(num=${board.num},nowPage=${nowPage})}" class="btn btn-secondary me-2">수정하기</a>
                         <a th:href="@{/boardDelete.do(num=${board.num},nowPage=${nowPage})}" class="btn btn-dark me-2" >삭제하기</a>
                         <a th:href="@{/boardList.do(nowPage=${nowPage})}" class="btn btn-secondary">목록으로</a>
                     </div>
                 </nav>
             </div>
         </div>
+        <script src="/js/board.js"></script>
     </div>
 </th:block>
 </body>

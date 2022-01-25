@@ -74,4 +74,6 @@ public class BoardRestController {
         boardreplyservice.boardReplySave(dto,memberentity);
     }
 
+
+
 }
