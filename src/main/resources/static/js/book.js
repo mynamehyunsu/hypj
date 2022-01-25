@@ -1,61 +1,19 @@
-//let index={
-//    init : function(){
-//        $("#btn-save").on("click",() => {
-//            this.save();
-//        });
-//    },
-//    save : function(){
-//        alert("book save함수 실행");
-//        let data = {
-//            subject : $("#subject").val(),
-//            price : $("#price").val(),
-//            content : $("#content").val()
-//        }
-//        let files = e.target.files;
-//        let file = {
-//            file : $("#file")[0].files[0];
-//        }
-//
-//        $.ajax({
-//                //회원가입 수행요청
-//                    type : "POST",
-//                    url : "/bookPostProc.do",
-//                    data : JSON.stringify(file), //http 데이터 바디 넘겨줄때
-//                    contentType : "application/json; charset=utf-8",//body 데이터가 어떤타입인지
-//                    dataType : "json"//받을때
-//                }).done(function(result){//url로 가서 응답을 받고 결과물이 있으면 result를 반환
-//                    alert("파일정보불러오기성공");
-//                    alert(result);
-//                    location.href="";
-//                }).fail(function(){
-//
-//                });
-////        console.log(data);
-//        $.ajax({
-//        //회원가입 수행요청
-//            type : "POST",
-//            url : "/bookPostProc.do",
-//            data : JSON.stringify(data), //http 데이터 바디 넘겨줄때
-//            contentType : "application/json; charset=utf-8",//body 데이터가 어떤타입인지
-//            dataType : "json"//받을때
-//        }).done(function(result){//url로 가서 응답을 받고 결과물이 있으면 result를 반환
-//            alert("책 등록이 완료 되었습니다");
-//            alert(result);
-//            location.href="/mainBookList.do";
-//        }).fail(function(){
-//
-//        });//ajax통신을 이용해서 4개의 데이터를  json으로 변경하여  insert 요청
-//    }
-//}
-//
-//index.init();
+
 let index = {
     init : function(){
         $("#btn-save").on("click",() => {
             this.save();
         });
+        $("#btn-reply-save").on("click",()=>{
+            this.replySave();
+        });
+        $("#btn-delete").on("click",()=>{
+            this.replyDelete();
+        })
     },
-    save : function(){
+
+
+    save : function(){//책등록
         event.preventDefault(); //폼동작 정지
 
         var form = $('#uploadForm')[0]
@@ -91,6 +49,49 @@ let index = {
 
         });
 
+    },//save function
+
+
+    replySave : function(){
+        //json형태로 담기
+        let data = {
+            content : $("#reply-content").val()
+        };
+
+        console.log(data);
+        $.ajax({
+
+            type : "POST",
+            url : "/bookReplySave.do?&bookNum="+$("#bookNum").val(),
+            data : JSON.stringify(data),
+            contentType : "application/json; charset=utf-8",
+            dataType:"json"
+
+        }).done(function(result){
+            alert("댓글작성완료");
+            location.href="";
+        }).fail(function(error){
+            alert("댓글작성실패 : "+JSON.stringify(error));
+
+        });
+    },//replySave function()끝
+
+    replyDelete : function(bookNum,replyNum){
+
+        alert("replyDelete함수실행 : "+ bookNum+"/"+replyNum);
+
+        $.ajax({
+            type : "DELETE",
+            url : "/bookReplyDelete.do?&bookNum="+bookNum+"&replyNum=   "+replyNum,
+            dataType : "json"
+
+        }).done(function(result){
+            alert("댓글 삭제 성공");
+            location.href="";
+        }).fail(function(error){
+            alert("댓글 삭제실패 : " + JSON.stringify(error));
+        });
     }
+
 }
 index.init();

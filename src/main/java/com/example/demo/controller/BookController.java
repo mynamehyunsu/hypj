@@ -31,6 +31,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -96,7 +97,13 @@ public class BookController {
         System.out.println("@RequestParam('num')으로 받아온값 : " + num);
         System.out.println("@RequestParam('nowPage')으로 받아온값 : " + nowPage);
 
-
+        bookservice.Upcount(num);
+//        BookEntity booke =bookservice.getBook(num);
+//        System.out.println(booke.getContent());
+//        System.out.println(booke.getNum());
+//        System.out.println(booke.getSubject());
+        model.addAttribute("book",bookservice.getBook(num));
+        model.addAttribute("nowPage",nowPage);
 
         return "/view/book/bookRead.html";
     }

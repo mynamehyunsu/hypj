@@ -3,15 +3,16 @@ package com.example.demo.controller;
 import com.example.demo.dto.BookDTO;
 import com.example.demo.dto.ResponseDTO;
 import com.example.demo.entity.BookEntity;
+import com.example.demo.entity.BookReplyEntity;
+import com.example.demo.entity.MemberEntity;
 import com.example.demo.service.BookService;
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,10 +27,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor
+@RequiredArgsConstructor//객체만들때 초기화 할때 필요한것들을 넣어서 만들어라
 public class BookRestController {
 
     private String uploadPath = "C:\\upload";
+
+    //di를할때 매개변수가 있는 생성자를 만들면 기본생성자는 자동 사라짐
 
     @Autowired
     private final BookService bookservice;
@@ -92,6 +95,27 @@ public class BookRestController {
             uploadPathFolder.mkdirs();
         }
         return folderPath; //오늘날짜 yyyy\MM\dd
+    }
+
+    @PostMapping("/bookReplySave.do")
+    public ResponseDTO<Integer> bookReplySave( @RequestParam("bookNum")int bookNum,@RequestBody BookReplyEntity bookreplyentity, @AuthenticationPrincipal MemberEntity memberentity){
+
+        System.out.println("bookreplyentity : " + bookreplyentity.toString());
+        System.out.println("@AuthenticationPrincipal MemberEntity : " + memberentity.toString());
+        System.out.println("@RequestParam(\"bookNum\")int bookNum : " + bookNum);
+
+        bookservice.postBookReply(memberentity,bookNum,bookreplyentity);
+
+
+        return new ResponseDTO<Integer>(HttpStatus.OK.value(),1);
+    }
+
+    @DeleteMapping("/bookReplyDelete.do")
+    public ResponseDTO<Integer> bookReplyDelete(@RequestParam("bookNum") int bookNum,@RequestParam("replyNum")int replyNum){
+
+            bookservice.replyDelete(replyNum);
+
+        return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
     }
 
 }
