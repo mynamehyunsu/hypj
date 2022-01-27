@@ -70,6 +70,7 @@ public class BoardService {
 
     public void delete(Long num) {
 
+        System.out.println("board delete 함수에서 받은 num : " + num);
         boardrepo.deleteById(num);
     }
 }

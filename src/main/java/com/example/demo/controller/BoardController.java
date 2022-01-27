@@ -87,8 +87,8 @@ public class BoardController {
     //키값으로 받아온 값이없으면 ""으로 기본값대체 required꼭명시
     public String boardRead(@RequestParam(value = "num",required = false,defaultValue="") Long num,
                             @RequestParam(value="nowPage",required = false,defaultValue = "") int nowPage,
-                            Model model,
-                            HttpServletRequest req){
+                            Model model
+                            ){
         System.out.println("@RequestParam('num')으로 받아온값 : " + num);
         boardService.Upcount(num);
 

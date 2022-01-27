@@ -88,7 +88,8 @@ public class BookService {
     }
 
     @Transactional
-    public void replyDelete(int replyNum){
-        bookreplyrepo.deleteById(replyNum);
+    public void replyDelete(int reply_Num){
+        System.out.println("replyDelete 함수에서 받은 replyNum : " + reply_Num);
+        bookreplyrepo.deleteById(reply_Num);
     }
 }

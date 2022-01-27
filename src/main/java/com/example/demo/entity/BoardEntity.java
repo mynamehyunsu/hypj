@@ -41,7 +41,9 @@ public class BoardEntity {
     @ColumnDefault("0")//조회수
     private int count;
 
-    @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    //orphanRemoval = true부모엔티티와 자식엔티티읜 연결이 끊어진 null 객체는 삭제
+    //cascade = CascadeType.REMOVE 부모객체가 삭제되면 자식객체도 같이 삭제
+    @OneToMany(mappedBy = "boardentity",fetch = FetchType.EAGER)
     //cascade = CascadeType.PERSIST게시글 지울때 댓글까지 다지우겟다
 //    @JsonIgnoreProperties({"boardentity","memberentity"})
     @OrderBy("id desc")

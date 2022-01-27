@@ -111,9 +111,12 @@ public class BookRestController {
     }
 
     @DeleteMapping("/bookReplyDelete.do")
-    public ResponseDTO<Integer> bookReplyDelete(@RequestParam("bookNum") int bookNum,@RequestParam("replyNum")int replyNum){
+    public ResponseDTO<Integer> bookReplyDelete(@RequestParam("book_Num") int book_Num,
+                                                @RequestParam("reply_Num")int reply_Num){
 
-            bookservice.replyDelete(replyNum);
+        System.out.println("bookrestcoltroller에서 ajax로받은 replyNum : " + reply_Num);
+            bookservice.replyDelete(reply_Num);
+            System.out.println("삭제성공");
 
         return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
     }

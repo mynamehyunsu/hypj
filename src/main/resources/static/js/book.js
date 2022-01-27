@@ -76,13 +76,13 @@ let index = {
         });
     },//replySave function()끝
 
-    replyDelete : function(bookNum,replyNum){
+    replyDelete : function(book_Num,reply_Num){
 
-        alert("replyDelete함수실행 : "+ bookNum+"/"+replyNum);
+        alert("replyDelete함수실행 : "+ book_Num+"/"+reply_Num);
 
         $.ajax({
             type : "DELETE",
-            url : "/bookReplyDelete.do?&bookNum="+bookNum+"&replyNum=   "+replyNum,
+            url : "/bookReplyDelete.do?&book_Num="+book_Num+"&reply_Num="+reply_Num,
             dataType : "json"
 
         }).done(function(result){

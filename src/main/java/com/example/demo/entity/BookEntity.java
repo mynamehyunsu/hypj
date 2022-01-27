@@ -37,7 +37,7 @@ public class BookEntity {
     private int count;
     @CreationTimestamp
     private Timestamp createDate;
-    @OneToMany(mappedBy="bookentity",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="bookentity",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE,orphanRemoval = true)
     @OrderBy("num desc")
     private List<BookReplyEntity> bookReply;
     //fetch = FetchType.LAZY 필요할때 들고오겠다(답글테이블에 펼치기 버튼을 누르면 가져오도록)
